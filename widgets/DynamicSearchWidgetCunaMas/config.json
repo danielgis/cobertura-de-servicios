@@ -1,3 +1,101 @@
 {
-  "serviceUrl": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer"
+  "groups": [
+    {
+      "name": "ubicaCiai",
+      "label": "Ubica CIAI",
+      "index": 0,
+      "logo": "./widgets/CartoMaintenanceWgt/images/rightOfWay.png",
+      "filters": [
+        {
+          "codeField": "CODDEP",
+          "nameField": "departamento",
+          "label": "Departamento",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "index": 0,
+          "filterAffected": 1
+        },
+        {
+          "codeField": "CODPROV",
+          "nameField": "provincia",
+          "label": "Provincia",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "index": 1,
+          "filterAffected": 2
+        },
+        {
+          "codeField": "CODDIST",
+          "nameField": "distrito",
+          "label": "Distrito",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "index": 2,
+          "filterAffected": 3
+        },
+        {
+          "codeField": "codigo_cg",
+          "nameField": "nombre_cg",
+          "label": "Comité de Gestión",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "index": 3,
+          "filterAffected": 4
+        },
+        {
+          "codeField": "codigo_local",
+          "nameField": "nombre_local",
+          "label": "Nombre de CIAI",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "index": 4,
+          "filterAffected": null
+        }
+      ]
+    },
+    {
+      "name": "ubicaSa",
+      "label": "Ubica SA",
+      "index": 1,
+      "logo": "./widgets/CartoMaintenanceWgt/images/rightOfWay.png",
+      "filters": [
+        {
+          "codeField": "unidad_territorial",
+          "nameField": "unidad_territorial ",
+          "label": "Seleccione la Unidad Territorial",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "index": 0,
+          "filterAffected": 1
+        },
+        {
+          "codeField": "CODDEP",
+          "nameField": "departamento",
+          "label": "Departamento",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "index": 0,
+          "filterAffected": 1
+        },
+        {
+          "codeField": "CODPROV",
+          "nameField": "provincia",
+          "label": "Provincia",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "index": 1,
+          "filterAffected": 2
+        },
+        {
+          "codeField": "CODDIST",
+          "nameField": "distrito",
+          "label": "Distrito",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "index": 2,
+          "filterAffected": 3
+        }
+      ]
+    }
+  ]
 }

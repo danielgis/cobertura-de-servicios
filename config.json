@@ -80,45 +80,15 @@
       },
       {
         "position": {
-          "left": 55,
-          "top": 45,
-          "relativeTo": "map"
-        },
-        "placeholderIndex": 1,
-        "id": "_45",
-        "name": "Measurement",
-        "version": "2.30",
-        "closeable": true,
-        "uri": "widgets/Measurement/Widget",
-        "config": "configs/Measurement/config__45.json"
-      },
-      {
-        "position": {
-          "left": 105,
-          "top": 45,
-          "relativeTo": "map"
-        },
-        "placeholderIndex": 1,
-        "id": "_46",
-        "name": "Legend",
-        "version": "2.30",
-        "closeable": true,
-        "uri": "widgets/Legend/Widget",
-        "config": "configs/Legend/config__46.json"
-      },
-      {
-        "position": {
           "left": 155,
           "top": 45,
           "relativeTo": "map"
         },
         "placeholderIndex": 1,
         "id": "_47",
-        "name": "LayerList",
         "version": "2.30",
         "closeable": true,
-        "uri": "widgets/LayerList/Widget",
-        "config": "configs/LayerList/config__47.json"
+        "uri": ""
       },
       {
         "uri": "widgets/OverviewMap/Widget",
@@ -160,7 +130,9 @@
           "relativeTo": "browser"
         },
         "id": "widgets_AttributeTable_Widget_51",
-        "name": "AttributeTable"
+        "name": "AttributeTable",
+        "config": "configs/AttributeTable/config_widgets_AttributeTable_Widget_51.json",
+        "visible": false
       },
       {
         "uri": "widgets/Splash/Widget",

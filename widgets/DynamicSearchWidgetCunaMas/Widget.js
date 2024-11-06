@@ -1,4 +1,4 @@
-define(['dojo/_base/declare', 'jimu/BaseWidget'], function (declare, BaseWidget) {
+define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin', "esri/tasks/QueryTask", "esri/tasks/query"], function (declare, BaseWidget, _WidgetsInTemplateMixin, QueryTask, Query) {
   return declare([BaseWidget], {
 
     // Custom widget code goes here
@@ -7,16 +7,28 @@ define(['dojo/_base/declare', 'jimu/BaseWidget'], function (declare, BaseWidget)
 
     postCreate: function postCreate() {
       this.inherited(arguments);
-      console.log('DynamicSearchWidgetCunaMas::postCreate');
+      // dojo.query().on('click', this.onClickGroup);
+      // this.scdApCs.on('click', this.onClickGroup);
+      // this.saApCs.on('click', this.onClickGroup);
+      // console.log(this.scdApCs);
+      // console.log('DynamicSearchWidgetCunaMas::postCreate');
+    },
+    onClickGroup: function onClickGroup(evt) {
+      // console.log(evt.currentTarget);
+      alert('Aqui se mostrar\xE1n los filtros para ' + evt.target.alt);
+    },
+    startup: function startup() {
+      this.inherited(arguments);
+      // console.log('DynamicSearchWidgetCunaMas::startup');
+      // console.log(this.scdApCs);
+      // this.scdApCs.on('click', this.onClickGroup.bind(this));
+      // this.saApCs.on('click', this.onClickGroup.bind(this));
+    },
+    onOpen: function onOpen() {
+      dojo.query(".groupCs").on('click', this.onClickGroup);
+      // console.log('DynamicSearchWidgetCunaMas::onOpen');
     }
   }
-  // startup() {
-  //   this.inherited(arguments);
-  //   console.log('DynamicSearchWidgetCunaMas::startup');
-  // },
-  // onOpen() {
-  //   console.log('DynamicSearchWidgetCunaMas::onOpen');
-  // },
   // onClose(){
   //   console.log('DynamicSearchWidgetCunaMas::onClose');
   // },
