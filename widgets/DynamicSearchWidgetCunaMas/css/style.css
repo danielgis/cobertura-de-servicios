@@ -1,0 +1,19 @@
+.dynamic-search-widget-cuna-mas {
+  width: 100%;
+  height: 100%;
+}
+
+.dynamic-search-widget-cuna-mas h3 {
+  font-size: 1.2em;
+}
+
+.dynamic-search-widget-cuna-mas h3,
+p {
+  margin-top: 0;
+}
+
+/* add additional custom styles */
+
+/* .jimu-widget-frame.jimu-container {
+  padding: 0% !important;
+} */
