@@ -1,26 +1,52 @@
 <div>
-  <div id="containerGroupsCs">
+  <div id="containerGroupsCs" class="containerGroupsClsCs active ctnPaddingClsCs"
+    data-dojo-attach-point="containerGroupsApCs">
     <div id=containerTitleCs>
       <h2>Seleccione el tipo de búsqueda</h2>
     </div>
-    <hr style="width:100%;">
+    <hr>
     <div id="containerGridCs">
-      <img src="./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png" alt="CIAI" class="groupCs"
+      <img src="./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png" alt="CIAI" class="groupFilterClsCs groupCs"
         data-dojo-attach-point="scdApCs">
-      <img src="./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png" alt="SA" class="groupCs"
+      <img src="./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png" alt="SA" class="groupFilterClsCs groupCs"
         data-dojo-attach-point="saApCs">
     </div>
   </div>
-  <!-- <div id="containerFiltersCs">
-    <div id="containerHeaderCs">
-
+  <div id="containerFiltersCs" class="containerFiltersClsCs" data-dojo-attach-point="containerFiltersApCs">
+    <div id="containerBackCs">
+      <button id="backButtonCs" class="backButtonClsCs groupCs" data-dojo-attach-point="backButtonApCs"><i
+          class='fas fa-angle-left'></i> Volver</button>
     </div>
-    <div id="containerBodyCs">
-
+    <div class="ctnPaddingClsCs">
+      <div id="containerHeaderCs" class="containerHeaderClsCs">
+        <div id="containerLblSelectedCs">
+          <div id="nameSelectedCs">
+            Ubica<br>CIAI
+          </div>
+          <div id="descSelectedCs">
+            Centro Infantil de Atención Integral
+          </div>
+        </div>
+        <div id="containerImgSelectedCs">
+          <img src="./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png" alt="CIAI" class="groupCs"
+            data-dojo-attach-point="scdApCs">
+        </div>
+      </div>
+      <hr>
+      <div id="containerBodyCs" data-dojo-attach-point="containerBodyApCs">
+        <!-- <p class="labelComboBoxClsCs">Departamento</p>
+        <select name="" id="" class="comboBoxClsCs"></select>
+        <p class="labelComboBoxClsCs">Provincia</p>
+        <select name="" id="" class="comboBoxClsCs"></select>
+        <p class="labelComboBoxClsCs">DIstrito</p>
+        <select name="" id="" class="comboBoxClsCs"></select>
+        <p class="labelComboBoxClsCs">Nombre CIAI</p>
+        <select name="" id="" class="comboBoxClsCs"></select>
+        <p class="labelComboBoxClsCs">Comité de gestión</p>
+        <select name="" id="" class="comboBoxClsCs">
+        </select> -->
+      </div>
     </div>
-  </div> -->
-  <!-- <h3>${nls.widgetTitle}</h3>
-  <p>${nls.description}</p>
 
-  <p>Service URL: ${config.serviceUrl}</p> -->
+  </div>
 </div>

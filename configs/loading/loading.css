@@ -5,7 +5,7 @@
 
 #main-loading #app-loading {
 	position: absolute;
-	background-image: url('images/logo.png');
+	background-image: url('images/background.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	/* Asegura que la imagen se ajuste sin cortarse */

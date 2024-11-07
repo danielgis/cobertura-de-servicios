@@ -57,15 +57,6 @@
 }
 
 
-/* .jimu-ldockable-panel {
-  position: fixed !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-} */
-
 @media (max-width: 801px) {
   .jimu-ldockable-panel {
     inset: auto !important;
@@ -74,5 +65,6 @@
     left: 0 !important;
     height: 50% !important;
     width: 100% !important;
+    /* Tamaño estándar en pantallas grandes */
   }
 }
