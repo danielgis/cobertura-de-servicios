@@ -18,9 +18,9 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       this.map.on("update-end", this.executeZoomExtentInitial.bind(this));
     },
     onClickGroup: function onClickGroup(evt) {
+      this.buildFormSearchCs();
       this.containerGroupsApCs.classList.toggle('active');
       this.containerFiltersApCs.classList.toggle('active');
-      this.buildFormSearchCs();
     },
     onClickBack: function onClickBack(evt) {
       this.containerGroupsApCs.classList.toggle('active');
@@ -53,7 +53,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
 
       var promise = Promise.resolve();
 
-      filters.forEach(function (filter) {
+      filters.forEach(function (filter, index) {
         var label = document.createElement('p');
         label.classList.add('labelComboBoxClsCs');
         label.innerHTML = filter.label;
@@ -61,7 +61,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
 
         var select = document.createElement('select');
         select.classList.add('comboBoxClsCs');
-        select.id = filter.codeField;
+        select.id = filter.nameField;
         // if filter.startupData == true; when execute get data by filter
         if (filter.startupData) {
           promise = promise.then(function () {
@@ -78,7 +78,9 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
           });
         };
 
-        // select.addEventListener('change', this.onChangeFilter.bind(this));
+        select.addEventListener('change', function (event) {
+          return _this.onChangeFilterCs(event, index);
+        });
         _this.containerBodyApCs.appendChild(select);
       });
     },
@@ -95,6 +97,73 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
 
       queryTask.execute(query).then(function (response) {
         console.log('response', response);
+        deferred.resolve(response);
+      }).catch(function (err) {
+        console.error('err', err);
+        deferred.reject(err);
+      });
+      return deferred.promise;
+    },
+    onChangeFilterCs: function onChangeFilterCs(evt, currentFilterIndex) {
+      var _this2 = this;
+
+      var selectedIndex = evt.target.selectedIndex;
+      var selectedValue = evt.target.options[selectedIndex].value;
+      var currentFilter = this.config.groups[0].filters[currentFilterIndex];
+
+      var promise = Promise.resolve();
+
+      if (currentFilter.isZoom) {
+        promise = promise.then(function () {
+          return _this2.setExtentByPoint(currentFilter.url, currentFilter.nameField + ' = \'' + selectedValue + '\'');
+        }).catch(function (err) {
+          console.error('err', err);
+        });
+      }
+
+      if (!currentFilter.filterAffected) {
+        return;
+      }
+
+      // this.clearDependentCombos(currentFilterIndex);
+
+      // Procesa cada índice en `filterAffected`
+      currentFilter.filterAffected.forEach(function (affectedIndex) {
+        var affectedFilter = _this2.config.groups[0].filters[affectedIndex];
+        var affectedSelect = document.getElementById(affectedFilter.nameField);
+
+        // Limpia las opciones anteriores
+        affectedSelect.innerHTML = '';
+        var defaultOption = document.createElement('option');
+        defaultOption.text = affectedFilter.firstOption;
+        defaultOption.value = '';
+        affectedSelect.appendChild(defaultOption);
+
+        // Obtiene los datos filtrados y actualiza el combobox afectado
+        _this2.getDataByFilter(affectedFilter.url, [affectedFilter.nameField, affectedFilter.nameField], currentFilter.nameField + ' = \'' + selectedValue + '\'').then(function (data) {
+          data.features.forEach(function (feature) {
+            var option = document.createElement('option');
+            option.value = feature.attributes[affectedFilter.nameField];
+            option.text = feature.attributes[affectedFilter.nameField];
+            affectedSelect.appendChild(option);
+          });
+        }).catch(function (err) {
+          console.error('Error al actualizar el filtro ' + affectedFilter.label + ':', err);
+        });
+      });
+    },
+    setExtentByPoint: function setExtentByPoint(url, where) {
+      self = this;
+      var deferred = new Deferred();
+      var queryTask = new QueryTask(url);
+      var query = new Query();
+      query.where = where;
+      query.returnGeometry = true;
+      query.outSpatialReference = this.map.spatialReference;
+
+      queryTask.execute(query).then(function (response) {
+        return self.map.centerAndZoom(response.features[0].geometry, 15);
+      }).then(function (response) {
         deferred.resolve(response);
       }).catch(function (err) {
         console.error('err', err);

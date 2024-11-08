@@ -13,7 +13,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
           "index": 0,
-          "filterAffected": 1,
+          "filterAffected": [
+            1
+          ],
           "firstOption": "Seleccione el Departamento",
           "startupData": true
         },
@@ -24,7 +26,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
           "index": 1,
-          "filterAffected": 2,
+          "filterAffected": [
+            2
+          ],
           "firstOption": "Seleccione la Provincia",
           "startupData": false
         },
@@ -35,7 +39,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
           "index": 2,
-          "filterAffected": 3,
+          "filterAffected": [
+            3
+          ],
           "firstOption": "Seleccione el Distrito",
           "startupData": false
         },
@@ -46,7 +52,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
           "index": 3,
-          "filterAffected": 4,
+          "filterAffected": [
+            4
+          ],
           "firstOption": "Seleccione el Comité de Gestión",
           "startupData": false
         },
@@ -56,10 +64,13 @@
           "label": "Nombre de CIAI",
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
-          "index": 4,
+          "index": [
+            5
+          ],
           "filterAffected": null,
           "firstOption": "Seleccione el CIAI",
-          "startupData": false
+          "startupData": false,
+          "isZoom": true
         }
       ]
     },
@@ -76,7 +87,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
           "index": 0,
-          "filterAffected": 1,
+          "filterAffected": [
+            1
+          ],
           "firstOption": "Seleccione la Unidad Territorial",
           "startupData": true
         },
@@ -87,7 +100,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
           "index": 0,
-          "filterAffected": 1,
+          "filterAffected": [
+            1
+          ],
           "firstOption": "Seleccione el Departamento",
           "startupData": false
         },
@@ -98,7 +113,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
           "index": 1,
-          "filterAffected": 2,
+          "filterAffected": [
+            2
+          ],
           "firstOption": "Seleccione la provincia",
           "startupData": false
         },
@@ -109,7 +126,9 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
           "index": 2,
-          "filterAffected": 3,
+          "filterAffected": [
+            3
+          ],
           "firstOption": "Seleccione el distrito",
           "startupData": false
         }
