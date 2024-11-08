@@ -159,10 +159,18 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       var query = new Query();
       query.where = where;
       query.returnGeometry = true;
-      query.outSpatialReference = this.map.spatialReference;
+      // query.outSpatialReference = this.map.spatialReference;
+      // query.returnExtentOnly = true;
 
-      queryTask.execute(query).then(function (response) {
-        return self.map.centerAndZoom(response.features[0].geometry, 15);
+      queryTask.executeForExtent(query).then(function (response) {
+        console.log('response', response);
+        self.map.setExtent(response.extent);
+        // if (response.features.length === 1) {
+        // console
+        // return self.map.centerAndZoom(response.features[0].geometry, 15)
+        // } else {
+
+        // }
       }).then(function (response) {
         deferred.resolve(response);
       }).catch(function (err) {

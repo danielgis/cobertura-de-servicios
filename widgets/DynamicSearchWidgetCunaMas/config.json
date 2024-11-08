@@ -46,29 +46,14 @@
           "startupData": false
         },
         {
-          "codeField": "codigo_cg",
-          "nameField": "nombre_cg",
-          "label": "Comité de Gestión",
+          "codeField": "codccpp",
+          "nameField": "centro_poblado",
+          "label": "Centro poblado",
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
           "index": 3,
-          "filterAffected": [
-            4
-          ],
-          "firstOption": "Seleccione el Comité de Gestión",
-          "startupData": false
-        },
-        {
-          "codeField": "codigo_local",
-          "nameField": "nombre_local",
-          "label": "Nombre de CIAI",
-          "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
-          "index": [
-            5
-          ],
           "filterAffected": null,
-          "firstOption": "Seleccione el CIAI",
+          "firstOption": "Seleccione el Centro Poblado",
           "startupData": false,
           "isZoom": true
         }
