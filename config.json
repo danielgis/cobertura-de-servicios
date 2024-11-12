@@ -151,7 +151,6 @@
         },
         "id": "widgets_AttributeTable_Widget_31",
         "name": "AttributeTable",
-        "config": "configs/AttributeTable/config_widgets_AttributeTable_Widget_31.json",
         "visible": false
       },
       {
@@ -246,7 +245,7 @@
       "right": 0,
       "bottom": 0
     },
-    "itemId": "1dc3de0d394147c1a47abb559dbfd48e",
+    "itemId": "cdd92cf5c7b74947b7980915b01123d4",
     "mapOptions": {},
     "id": "map",
     "portalUrl": "https://geosisfoh.midis.gob.pe/portal",

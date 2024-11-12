@@ -2,55 +2,59 @@
   "groups": [
     {
       "name": "ubicaCiai",
-      "label": "Ubica CIAI",
+      "label": "Ubica\nCIAI",
+      "description": "Centro de Atención Integral",
       "index": 0,
-      "logo": "./widgets/CartoMaintenanceWgt/images/rightOfWay.png",
+      "logo": "./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png",
       "filters": [
         {
-          "codeField": "CODDEP",
+          "codeField": "iddep",
           "nameField": "departamento",
           "label": "Departamento",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 0,
           "filterAffected": [
             1
           ],
           "firstOption": "Seleccione el Departamento",
-          "startupData": true
+          "startupData": true,
+          "isZoom": true
         },
         {
-          "codeField": "CODPROV",
+          "codeField": "idprov",
           "nameField": "provincia",
           "label": "Provincia",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 1,
           "filterAffected": [
             2
           ],
           "firstOption": "Seleccione la Provincia",
-          "startupData": false
+          "startupData": false,
+          "isZoom": true
         },
         {
-          "codeField": "CODDIST",
+          "codeField": "ubigeo",
           "nameField": "distrito",
           "label": "Distrito",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 2,
           "filterAffected": [
             3
           ],
           "firstOption": "Seleccione el Distrito",
-          "startupData": false
+          "startupData": false,
+          "isZoom": true
         },
         {
-          "codeField": "codccpp",
+          "codeField": "idccpp",
           "nameField": "centro_poblado",
           "label": "Centro poblado",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCALES_CIAI/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 3,
           "filterAffected": null,
           "firstOption": "Seleccione el Centro Poblado",
@@ -60,62 +64,62 @@
       ]
     },
     {
-      "name": "ubicaSa",
-      "label": "Ubica SA",
+      "name": "ubicaSaf",
+      "label": "Ubica\nSAF",
+      "description": "Servicio de Acompañamiento a Familias",
       "index": 1,
-      "logo": "./widgets/CartoMaintenanceWgt/images/rightOfWay.png",
+      "logo": "./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png",
       "filters": [
         {
-          "codeField": "unidad_territorial",
-          "nameField": "unidad_territorial ",
-          "label": "Seleccione la Unidad Territorial",
-          "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
-          "index": 0,
-          "filterAffected": [
-            1
-          ],
-          "firstOption": "Seleccione la Unidad Territorial",
-          "startupData": true
-        },
-        {
-          "codeField": "CODDEP",
+          "codeField": "iddep",
           "nameField": "departamento",
           "label": "Departamento",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 0,
           "filterAffected": [
             1
           ],
           "firstOption": "Seleccione el Departamento",
-          "startupData": false
+          "startupData": true
         },
         {
-          "codeField": "CODPROV",
+          "codeField": "idprov",
           "nameField": "provincia",
           "label": "Provincia",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 1,
           "filterAffected": [
             2
           ],
-          "firstOption": "Seleccione la provincia",
+          "firstOption": "Seleccione la Provincia",
           "startupData": false
         },
         {
-          "codeField": "CODDIST",
+          "codeField": "ubigeo",
           "nameField": "distrito",
           "label": "Distrito",
           "type": "select",
-          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/LOCAL_SA/FeatureServer/0",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 2,
           "filterAffected": [
             3
           ],
-          "firstOption": "Seleccione el distrito",
+          "firstOption": "Seleccione el Distrito",
           "startupData": false
+        },
+        {
+          "codeField": "idccpp",
+          "nameField": "centro_poblado",
+          "label": "Centro poblado",
+          "type": "select",
+          "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
+          "index": 3,
+          "filterAffected": null,
+          "firstOption": "Seleccione el Centro Poblado",
+          "startupData": false,
+          "isZoom": true
         }
       ]
     }

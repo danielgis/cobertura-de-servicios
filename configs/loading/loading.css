@@ -7,12 +7,8 @@
 	position: absolute;
 	background-image: url('images/background.png');
 	background-repeat: no-repeat;
-	background-size: contain;
-	/* Asegura que la imagen se ajuste sin cortarse */
-	width: 40vw;
-	/* Ajusta el ancho relativo al viewport */
-	height: 20vh;
-	/* Ajusta la altura relativa al viewport */
+	width: 900px;
+	height: 173px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -23,21 +19,8 @@
 	background-image: url('images/predefined_loading_1.gif');
 	background-repeat: no-repeat;
 	width: 58px;
-	height: 30px;
+	height: 58px;
 	top: 75%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
-
-@media (max-width: 801px) {
-
-	/* Ajustes para pantallas pequeñas */
-	#main-loading #app-loading {
-		width: 90vw;
-		/* Ocupa el 60% del ancho en teléfonos */
-	}
-
-	#main-loading #loading-gif {
-		top: 55%;
-	}
 }

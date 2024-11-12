@@ -15,30 +15,30 @@
 ///////////////////////////////////////////////////////////////////////////
 
 define([
-    'dojo/_base/declare',
-    'dojo/_base/lang',
-    'dojo/_base/array',
-    'dojo/_base/html',
-    'dojo/aspect',
-    'dojo/query',
-    'dojo/on',
-    'dojo/keys',
-    'dijit/Tooltip',
-    'dojo/Deferred',
-    'dojo/mouse',
-    'dojo/dom-construct',
-    'dojo/dom-geometry',
-    'jimu/BaseWidget',
-    'jimu/PoolControllerMixin',
-    'jimu/tokenUtils',
-    'jimu/portalUtils',
-    'jimu/portalUrlUtils',
-    'jimu/utils',
-    'jimu/dijit/Message',
-    './PopupTileNodes',
-    'dojo/NodeList-manipulate'
-  ],
-  function(declare, lang, array, html, aspect, query, on, keys, Tooltip, Deferred, mouse,
+  'dojo/_base/declare',
+  'dojo/_base/lang',
+  'dojo/_base/array',
+  'dojo/_base/html',
+  'dojo/aspect',
+  'dojo/query',
+  'dojo/on',
+  'dojo/keys',
+  'dijit/Tooltip',
+  'dojo/Deferred',
+  'dojo/mouse',
+  'dojo/dom-construct',
+  'dojo/dom-geometry',
+  'jimu/BaseWidget',
+  'jimu/PoolControllerMixin',
+  'jimu/tokenUtils',
+  'jimu/portalUtils',
+  'jimu/portalUrlUtils',
+  'jimu/utils',
+  'jimu/dijit/Message',
+  './PopupTileNodes',
+  'dojo/NodeList-manipulate'
+],
+  function (declare, lang, array, html, aspect, query, on, keys, Tooltip, Deferred, mouse,
     domConstruct, domGeometry, BaseWidget, PoolControllerMixin, tokenUtils, portalUtils,
     portalUrlUtils, utils, Message, PopupTileNodes) {
     /* global jimuConfig */
@@ -63,12 +63,12 @@ define([
 
       moveTopOnActive: false,
 
-      postMixInProperties: function() {
+      postMixInProperties: function () {
         this.inherited(arguments);
         this.isRenderIdForAttrs = true;
       },
 
-      postCreate: function() {
+      postCreate: function () {
         this.inherited(arguments);
         html.setAttr(this.domNode, 'aria-label', this.nls._widgetLabel);
 
@@ -107,7 +107,7 @@ define([
 
         this._setElementsSize();
 
-        this.own(on(this.domNode, mouse.enter, lang.hitch(this, function() {
+        this.own(on(this.domNode, mouse.enter, lang.hitch(this, function () {
           var title = '';
           var portalUrl = this.appConfig && this.appConfig.portalUrl || '';
           var server = portalUrlUtils.getServerByUrl(portalUrl);
@@ -121,13 +121,13 @@ define([
         })));
       },
 
-      startup: function() {
+      startup: function () {
         this.inherited(arguments);
         this.resize();
         setTimeout(lang.hitch(this, this.resize), 100);
       },
 
-      onAction: function(action, data) {
+      onAction: function (action, data) {
         /*jshint unused: false*/
         if (action === 'highLight' && data) {
           var node = query('div[settingid="' + data.widgetId + '"]', this.domNode)[0];
@@ -138,7 +138,7 @@ define([
         }
       },
 
-      onSignIn: function(credential) {
+      onSignIn: function (credential) {
         this.inherited(arguments);
 
         html.setStyle(this.signinLinkNode, 'display', 'none');
@@ -160,22 +160,22 @@ define([
         this.resize();
       },
 
-      onSignOut: function() {
+      onSignOut: function () {
         this.inherited(arguments);
 
         this._onSignOut(this.nls.signin);
 
         var portal = portalUtils.getPortal(this.appConfig.portalUrl);
-        portal.loadSelfInfo().then(lang.hitch(this, function(selfInfo) {
+        portal.loadSelfInfo().then(lang.hitch(this, function (selfInfo) {
           var name = selfInfo.name;
           var signInTip = this.nls.signInTo + ' ' + name;
           this._onSignOut(signInTip);
-        }), lang.hitch(this, function(err) {
+        }), lang.hitch(this, function (err) {
           console.error(err);
         }));
       },
 
-      _onSignOut: function(signInTip) {
+      _onSignOut: function (signInTip) {
         html.setStyle(this.signinLinkNode, 'display', '');
         html.setAttr(this.signinLinkNode, 'innerHTML', signInTip);
         html.setStyle(this.userNameLinkNode, 'display', 'none');
@@ -196,11 +196,11 @@ define([
         this.resize();
       },
 
-      resize: function() {
+      resize: function () {
         this._resize();
       },
 
-      _resize: function() {
+      _resize: function () {
         var box = html.getContentBox(this.domNode);
 
         //by default, we show all elements
@@ -222,7 +222,7 @@ define([
         }
       },
 
-      destroy: function() {
+      destroy: function () {
         if (this.timeoutHandle) {
           clearTimeout(this.timeoutHandle);
           this.timeoutHandle = null;
@@ -241,7 +241,7 @@ define([
         this.inherited(arguments);
       },
 
-      onAppConfigChanged: function(appConfig, reason, changedData) {
+      onAppConfigChanged: function (appConfig, reason, changedData) {
         switch (reason) {
           case 'attributeChange':
             this._onAttributeChange(appConfig, changedData);
@@ -253,7 +253,7 @@ define([
         this.resize();
       },
 
-      getOpenedIds: function() {
+      getOpenedIds: function () {
         this.inherited(arguments);
         if (this.openedId === '') {
           return [];
@@ -261,7 +261,7 @@ define([
         return [this.openedId];
       },
 
-      setOpenedIds: function(ids) {
+      setOpenedIds: function (ids) {
         if (ids.length === 0) {
           return;
         }
@@ -269,26 +269,26 @@ define([
         if (!config) {
           return;
         }
-        if(this.openedId){
+        if (this.openedId) {
           this._switchNodeToClose(this.openedId);
         }
         this.openedId = ids[0];
         if (config.widgets && config.openType === 'openAll') {
           this._switchNodeToOpen(config.id);
         } else if (!config.widgets) {
-          if(this._getIconNodeById(config.id)){
+          if (this._getIconNodeById(config.id)) {
             this._switchNodeToOpen(config.id);
-          }else{
+          } else {
             this._showIconContent(config);
           }
         }
       },
 
-      _onLogoLoad: function() {
+      _onLogoLoad: function () {
         this.resize();
       },
 
-      _highLight: function(node) {
+      _highLight: function (node) {
         if (this.hlDiv) {
           this._removeHighLight();
         }
@@ -309,7 +309,7 @@ define([
         }, node, 'before');
       },
 
-      _removeHighLight: function() {
+      _removeHighLight: function () {
         if (this.hlDiv) {
           domConstruct.destroy(this.hlDiv);
           this.hlDiv = null;
@@ -317,7 +317,7 @@ define([
       },
 
 
-      _onAttributeChange: function(appConfig, changedData) {
+      _onAttributeChange: function (appConfig, changedData) {
         /*jshint unused: false*/
         if ('title' in changedData && changedData.title !== this.appConfig.title) {
           this.titleNode.innerHTML = utils.sanitizeHTML(changedData.title);
@@ -326,10 +326,10 @@ define([
           this.subtitleNode.innerHTML = utils.sanitizeHTML(changedData.subtitle);
         }
         if ('logo' in changedData && changedData.logo !== this.appConfig.logo) {
-          if(changedData.logo){
+          if (changedData.logo) {
             html.setAttr(this.logoNode, 'src', changedData.logo);
             html.removeClass(this.logoNode, 'hide-logo');
-          }else{
+          } else {
             html.removeAttr(this.logoNode, 'src');
             html.addClass(this.logoNode, 'hide-logo');
           }
@@ -342,10 +342,10 @@ define([
         this._handleTitleColorAndLogoLink(appConfig);
       },
 
-      _handleTitleColorAndLogoLink: function(appConfig){
-        if(appConfig.titleColor){
+      _handleTitleColorAndLogoLink: function (appConfig) {
+        if (appConfig.titleColor) {
           html.setStyle(this.titleNode, 'color', appConfig.titleColor);
-        }else{
+        } else {
           html.setStyle(this.titleNode, 'color', '');
         }
 
@@ -356,7 +356,7 @@ define([
         });
       },
 
-      _setElementsSize: function() {
+      _setElementsSize: function () {
         html.setStyle(this.logoNode, {
           height: '30px'
           // minWidth: '30px',
@@ -376,9 +376,9 @@ define([
         });
       },
 
-      _processGroupSetting: function() {
+      _processGroupSetting: function () {
         function getOpenType(gLabel) {
-          if(this.config.groupSetting){
+          if (this.config.groupSetting) {
             for (var i = 0; i < this.config.groupSetting.length; i++) {
               if (this.config.groupSetting[i].label === gLabel) {
                 return this.config.groupSetting[i].type;
@@ -388,14 +388,14 @@ define([
           //this is the default open type
           return 'openAll';
         }
-        array.forEach(this.appConfig.widgetPool.groups, function(g) {
+        array.forEach(this.appConfig.widgetPool.groups, function (g) {
           g.openType = getOpenType.call(this, g.label);
         }, this);
       },
 
-      _createDynamicLinks: function(links) {
+      _createDynamicLinks: function (links) {
         html.empty(this.dynamicLinksNode);
-        array.forEach(links, function(link) {
+        array.forEach(links, function (link) {
           html.create('a', {
             href: utils.dynamicLinkXssFilter(link.url),
             target: '_blank',
@@ -410,7 +410,7 @@ define([
         }, this);
       },
 
-      _showSwitchableElements: function(showElement) {
+      _showSwitchableElements: function (showElement) {
         var es = this.switchableElements;
 
         for (var p in es) {
@@ -450,7 +450,7 @@ define([
         }
       },
 
-      _switchSignin: function() {
+      _switchSignin: function () {
         var credential = tokenUtils.getPortalCredential(this.appConfig.portalUrl);
         if (credential) {
           this.onSignIn(credential);
@@ -459,7 +459,7 @@ define([
         }
       },
 
-      _onLogoClick: function() {
+      _onLogoClick: function () {
         // return;
         if (this.popupLinkNode) {
           html.destroy(this.popupLinkNode);
@@ -474,13 +474,13 @@ define([
         }
       },
 
-      _onLogoKeydown: function(evt) {
-        if(evt.keyCode === keys.ENTER){
+      _onLogoKeydown: function (evt) {
+        if (evt.keyCode === keys.ENTER) {
           this._onLogoClick();
         }
       },
 
-      _hidePopupLink: function() {
+      _hidePopupLink: function () {
         html.setStyle(this.popupLinkNode, 'display', 'none');
 
         if (window.isRTL) {
@@ -496,7 +496,7 @@ define([
         this.popupLinksVisible = false;
       },
 
-      _showPopupLink: function() {
+      _showPopupLink: function () {
         html.setStyle(this.popupLinkNode, 'display', '');
 
         if (window.isRTL) {
@@ -510,11 +510,11 @@ define([
         }
 
         //focus on first link A or close btn
-        if(utils.isInNavMode()){
-          if(this.appConfig.links){
+        if (utils.isInNavMode()) {
+          if (this.appConfig.links) {
             var firstLinkA = query('.jimu-link a', this.popupLinkNode)[0];
             firstLinkA.focus();
-          }else{
+          } else {
             var closeBtn = query('.jimu-popup-link-close-btn', this.popupLinkNode)[0];
             closeBtn.focus();
           }
@@ -523,7 +523,7 @@ define([
         this.popupLinksVisible = true;
       },
 
-      _createPopupLinkNode: function() {
+      _createPopupLinkNode: function () {
         var node, titleNode, box;
         box = html.getContentBox(jimuConfig.mainPageId);
 
@@ -568,23 +568,23 @@ define([
             marginTop: ((this.height - 30) / 2) + 'px'
           }
         }, titleNode);
-        this.own(on(closeBtn, 'click', lang.hitch(this, function() {
+        this.own(on(closeBtn, 'click', lang.hitch(this, function () {
           this._hidePopupLink();
         })));
-        this.own(on(closeBtn, 'keydown', lang.hitch(this, function(evt) {
-          if(utils.isInNavMode()){
-            if(evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE || evt.keyCode === keys.ESCAPE){
+        this.own(on(closeBtn, 'keydown', lang.hitch(this, function (evt) {
+          if (utils.isInNavMode()) {
+            if (evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE || evt.keyCode === keys.ESCAPE) {
               this._hidePopupLink();
               this.logoLinkNode.focus();
-            }else if(evt.keyCode === keys.TAB && !evt.shiftKey && this.appConfig.links.length > 0){
-            }else{
+            } else if (evt.keyCode === keys.TAB && !evt.shiftKey && this.appConfig.links.length > 0) {
+            } else {
               evt.preventDefault();
             }
           }
         })));
 
-        this.own(on(node, 'keydown', lang.hitch(this, function(evt) {
-          if(utils.isInNavMode() && evt.keyCode === keys.ESCAPE && !html.hasClass(node, 'jimu-popup-link-close-btn')){
+        this.own(on(node, 'keydown', lang.hitch(this, function (evt) {
+          if (utils.isInNavMode() && evt.keyCode === keys.ESCAPE && !html.hasClass(node, 'jimu-popup-link-close-btn')) {
             closeBtn.focus();
           }
         })));
@@ -598,24 +598,24 @@ define([
         }, titleNode);
 
         var titleWidth = 'auto';
-        try{
+        try {
           titleWidth = html.getMarginBox(titleNode).w -
             html.getMarginBox(closeBtn).w -
             html.getMarginExtents(textNode).w + 'px';
-        } catch(err) {
+        } catch (err) {
           console.error(err);
           titleWidth = 'auto';
         }
         html.setStyle(textNode, 'width', titleWidth);
 
         var linkNodes = [];
-        array.forEach(this.appConfig.links, function(link) {
+        array.forEach(this.appConfig.links, function (link) {
           var linkNode = this._createLinkNode(node, link, false);
           linkNodes.push(linkNode);
         }, this);
-        if(linkNodes.length){
-          this.own(on(linkNodes[linkNodes.length - 1], 'keydown', lang.hitch(this, function(evt) {
-            if(utils.isInNavMode() && evt.keyCode === keys.TAB && !evt.shiftKey){
+        if (linkNodes.length) {
+          this.own(on(linkNodes[linkNodes.length - 1], 'keydown', lang.hitch(this, function (evt) {
+            if (utils.isInNavMode() && evt.keyCode === keys.TAB && !evt.shiftKey) {
               evt.preventDefault();
               var linkA = query('a', linkNodes[0])[0];
               linkA.focus();
@@ -647,7 +647,7 @@ define([
         return node;
       },
 
-      _createLinkNode: function(containerNode, link, isSign) {
+      _createLinkNode: function (containerNode, link, isSign) {
         var node, lineNode, linkSectionNode, className;
 
         node = html.place('<div class="jimu-link"></div>', containerNode);
@@ -675,11 +675,11 @@ define([
         return node;
       },
 
-      _onSigninClick: function() {
+      _onSigninClick: function () {
         tokenUtils.signInPortal(this.appConfig.portalUrl, this.appConfig.appId);
       },
 
-      _onSignoutClick: function() {
+      _onSignoutClick: function () {
         var isDepolyedApp = !this.appConfig.mode;
 
         if (isDepolyedApp) {
@@ -692,17 +692,17 @@ define([
         }
       },
 
-      _onUserNameClick: function() {
+      _onUserNameClick: function () {
 
       },
 
-      _getHeaderSectionWidth: function() {
+      _getHeaderSectionWidth: function () {
         var width;
         width = html.getMarginBox(this.headerNode).w;
         return width;
       },
 
-      _getContainerWidth: function(box) {
+      _getContainerWidth: function (box) {
         var headSectionWidth = this._getHeaderSectionWidth();
         //the container width
         var containerWidth = box.w - headSectionWidth - this._getEmptyWidth(box);
@@ -710,7 +710,7 @@ define([
         return containerWidth;
       },
 
-      _calcContainerAndEmptyWidth: function(box) {
+      _calcContainerAndEmptyWidth: function (box) {
         var containerWidth = this._getContainerWidth(box);
         var emptyWidth = this._getEmptyWidth(box);
         //here, we need put at least two icons
@@ -763,11 +763,11 @@ define([
         };
       },
 
-      _getEmptyWidth: function(box) {
+      _getEmptyWidth: function (box) {
         return 1 / 10 * box.w;
       },
 
-      _createIconNodes: function(box) {
+      _createIconNodes: function (box) {
         var iconTabIndex = this.tabIndex + 20;
         query('.icon-node', this.containerNode).remove();
         // this._closeDropMenu();
@@ -815,12 +815,12 @@ define([
           nodes.push(node);
         }
 
-        nodes.reverse().forEach(function(n){
+        nodes.reverse().forEach(function (n) {
           iconTabIndex += 200;
           html.setAttr(n, 'tabindex', iconTabIndex);
           //Inpanel widgets don't need tabindex.
           //But off panel widgets do, like search widget
-          if(!n.config.inPanel){
+          if (!n.config.inPanel) {
             n.config.tabIndex = iconTabIndex;
           }
         });
@@ -859,7 +859,7 @@ define([
         }
       },
 
-      _createIconNode: function(iconConfig) {
+      _createIconNode: function (iconConfig) {
         var node, iconUrl;
         if (iconConfig.name === '__more') {
           iconUrl = this.folderUrl + 'images/more_icon.png';
@@ -868,7 +868,7 @@ define([
         }
 
         node = html.create('div', {
-          'class': 'icon-node jimu-float-trailing' + ((this.openedId === iconConfig.id)? ' jimu-state-selected': ''),
+          'class': 'icon-node jimu-float-trailing' + ((this.openedId === iconConfig.id) ? ' jimu-state-selected' : ''),
           title: iconConfig.label,
           role: 'button',
           'aria-pressed': this.openedId === iconConfig.id ? 'true' : 'false',
@@ -888,25 +888,25 @@ define([
           }
         }, node);
 
-        if(window.isRTL && iconConfig.mirrorIconForRTL){
+        if (window.isRTL && iconConfig.mirrorIconForRTL) {
           html.addClass(imgNode, 'jimu-flipx');
         }
 
         if (iconConfig.name === '__more') {
           this._morePaneNode = node;
           on(node, 'click', lang.hitch(this, this._showMorePane, iconConfig));
-          on(node, 'keydown', lang.hitch(this, function(evt) {
-            if(evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE){
+          on(node, 'keydown', lang.hitch(this, function (evt) {
+            if (evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE) {
               this._showMorePane();
             }
           }));
         } else {
-          on(node, 'click', lang.hitch(this, function() {
+          on(node, 'click', lang.hitch(this, function () {
             this._onIconClick(node);
           }));
 
-          on(node, 'keydown', lang.hitch(this, function(evt) {
-            if(evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE){
+          on(node, 'keydown', lang.hitch(this, function (evt) {
+            if (evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE) {
               this._onIconClick(node);
             }
           }));
@@ -934,7 +934,7 @@ define([
         return node;
       },
 
-      _createDropTriangle: function(node) {
+      _createDropTriangle: function (node) {
         var box = html.getMarginBox(node);
         var triangleLeft = box.l + box.w / 2 - 4;
         html.create('div', {
@@ -945,7 +945,7 @@ define([
         }, node);
       },
 
-      _onIconClick: function(node, isFirstTime) {
+      _onIconClick: function (node, isFirstTime) {
         if (!node.config.widgets || node.config.widgets.length === 1 ||
           node.config.openType === 'openAll') {
           //widget or group with 'openAll' open type
@@ -954,7 +954,7 @@ define([
             return;
           } else {
             if (this.openedId) {
-              this._switchNodeToClose(this.openedId).then(lang.hitch(this, function() {
+              this._switchNodeToClose(this.openedId).then(lang.hitch(this, function () {
                 this._closeDropMenu();
                 this._switchNodeToOpen(node.config.id);
               }));
@@ -963,22 +963,22 @@ define([
             }
           }
         } else {
-          if(this.dropMenuNode){
+          if (this.dropMenuNode) {
             this._closeDropMenu();
-          }else{
+          } else {
             this._openDropMenu(node, isFirstTime);
           }
         }
       },
 
-      _closeDropMenu: function() {
+      _closeDropMenu: function () {
         if (this.dropMenuNode) {
           html.destroy(this.dropMenuNode);
           this.dropMenuNode = null;
         }
       },
 
-      _openDropMenu: function(pnode, isFirstTime) {
+      _openDropMenu: function (pnode, isFirstTime) {
         this.dropMenuNode = html.create('div', {
           'class': 'jimu-drop-menu jimu-main-background',
           title: pnode.config.label,
@@ -990,7 +990,7 @@ define([
 
         html.place(this.dropMenuNode, this.containerNode);
 
-        array.forEach(pnode.config.widgets, function(widgetConfig) {
+        array.forEach(pnode.config.widgets, function (widgetConfig) {
           this._createDropMenuItem(widgetConfig, pnode);
         }, this);
 
@@ -1003,38 +1003,38 @@ define([
         this._initDropMenuEvent(pnode, isFirstTime);
       },
 
-      _initDropMenuEvent:function(groupNode, isFirstTime){
+      _initDropMenuEvent: function (groupNode, isFirstTime) {
         var nodes = query('.menu-item', this.dropMenuNode);
-        this.own(on(nodes, 'keydown', lang.hitch(this, function(evt){
-          if(evt.keyCode === keys.TAB || evt.keyCode === keys.ESCAPE){
+        this.own(on(nodes, 'keydown', lang.hitch(this, function (evt) {
+          if (evt.keyCode === keys.TAB || evt.keyCode === keys.ESCAPE) {
             evt.stopPropagation();
             evt.preventDefault();
             this._closeDropMenu();
             groupNode.focus();
-          } else{
+          } else {
             var nextItem;
-            if(evt.keyCode === keys.DOWN_ARROW){
+            if (evt.keyCode === keys.DOWN_ARROW) {
               nextItem = evt.target.nextSibling ? evt.target.nextSibling : evt.target;
-            }else if(evt.keyCode === keys.UP_ARROW){
+            } else if (evt.keyCode === keys.UP_ARROW) {
               nextItem = evt.target.previousSibling ? evt.target.previousSibling : evt.target;
-            }else if(evt.keyCode === keys.HOME){
+            } else if (evt.keyCode === keys.HOME) {
               nextItem = nodes[0];
-            }else if(evt.keyCode === keys.END){
+            } else if (evt.keyCode === keys.END) {
               nextItem = nodes[nodes.length - 1];
             }
-            if(nextItem){
+            if (nextItem) {
               nextItem.focus();
             }
           }
         })));
 
-        if(isFirstTime){
+        if (isFirstTime) {
           return;
         }
         nodes[0].focus();//default
       },
 
-      _createDropMenuItem: function(sconfig, groupNode) {
+      _createDropMenuItem: function (sconfig, groupNode) {
         var node = html.create('div', {
           'class': 'menu-item',
           'tabindex': '-1',
@@ -1054,11 +1054,11 @@ define([
           innerHTML: utils.sanitizeHTML(sconfig.label)
         }, node);
 
-        this.own(on(node, 'click', lang.hitch(this, function() {
+        this.own(on(node, 'click', lang.hitch(this, function () {
           this._dropMenuItemClick(node);
         })));
-        this.own(on(node, 'keydown', lang.hitch(this, function(evt) {
-          if(evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE){
+        this.own(on(node, 'keydown', lang.hitch(this, function (evt) {
+          if (evt.keyCode === keys.ENTER || evt.keyCode === keys.SPACE) {
             this._dropMenuItemClick(node);
           }
         })));
@@ -1067,18 +1067,18 @@ define([
         return node;
       },
 
-      _dropMenuItemClick: function(node){
+      _dropMenuItemClick: function (node) {
         this._closeDropMenu();
-        if(this.openedId){
-          this._switchNodeToClose(this.openedId).then(lang.hitch(this, function() {
+        if (this.openedId) {
+          this._switchNodeToClose(this.openedId).then(lang.hitch(this, function () {
             this._showIconContent(node.config);
           }));
-        }else{
+        } else {
           this._showIconContent(node.config);
         }
       },
 
-      _setDropMenuPosition: function(pnode) {
+      _setDropMenuPosition: function (pnode) {
         var position = {};
         var menuBox = html.getMarginBox(this.dropMenuNode);
 
@@ -1087,7 +1087,7 @@ define([
         html.setStyle(this.dropMenuNode, utils.getPositionStyle(position));
       },
 
-      _getDropdownPosition: function(pnode, sbox) {
+      _getDropdownPosition: function (pnode, sbox) {
         var position = {},
           pbox = html.getMarginBox(pnode),
           thisBox = html.getMarginBox(this.domNode);
@@ -1095,41 +1095,41 @@ define([
         position.top = this.height + 1;
 
         if (window.isRTL) {
-          if(pbox.l + pbox.w - sbox.w < 0){
+          if (pbox.l + pbox.w - sbox.w < 0) {
             position.right = 0;
-          }else{
+          } else {
             position.right = pbox.l + pbox.w - sbox.w;
           }
         } else {
-          if(pbox.l + sbox.w > thisBox.w){
+          if (pbox.l + sbox.w > thisBox.w) {
             position.right = 0;
-          }else{
+          } else {
             position.left = pbox.l;
           }
         }
         return position;
       },
 
-      _switchNodeToOpen: function(id) {
+      _switchNodeToOpen: function (id) {
         var node = this._getIconNodeById(id);
         this._showIconContent(node.config);
       },
 
-      _switchNodeToClose: function(id) {
+      _switchNodeToClose: function (id) {
         this._removeSelectedStateForIcons()
         var iconJson = this.appConfig.getConfigElementById(id);
         var def;
-        if(iconJson){
-          if(iconJson.inPanel === false){
+        if (iconJson) {
+          if (iconJson.inPanel === false) {
             this.widgetManager.closeWidget(id);
             this.openedId = '';
             def = new Deferred();
             def.resolve();
             return def;
-          }else{
+          } else {
             return this.panelManager.closePanel(id + '_panel');
           }
-        }else{
+        } else {
           def = new Deferred();
           def.resolve();
           return def;
@@ -1137,7 +1137,7 @@ define([
 
       },
 
-      _getIconNodeById: function(id, isFromMorePane) {
+      _getIconNodeById: function (id, isFromMorePane) {
         var domNode = isFromMorePane ? this.morePane.domNode : this.domNode;
         var node = query('.icon-node[settingId="' + id + '"]', domNode);
         if (node.length === 0) {
@@ -1146,7 +1146,7 @@ define([
         return node[0];
       },
 
-      _unSelectIcon: function(id) {
+      _unSelectIcon: function (id) {
         var nodes = query('.icon-node[settingId="' + id + '"]', this.domNode)
         this._removeSelectedStateForIcons(nodes)
         this.openedId = '';
@@ -1154,7 +1154,7 @@ define([
 
       _removeSelectedStateForIcons: function (nodes) {
         nodes = (nodes || query('.icon-node', this.domNode))
-        array.forEach(nodes, function(node) {
+        array.forEach(nodes, function (node) {
           html.removeClass(node, 'jimu-state-selected')
           html.setAttr(node, 'aria-pressed', 'false');
         }, this);
@@ -1165,16 +1165,16 @@ define([
         html.setAttr(iconNode, 'aria-pressed', 'true');
       },
 
-      _showIconContent: function(iconConfig) {
+      _showIconContent: function (iconConfig) {
         var iconNode;
-        if(iconConfig.inPanel === false){
-          this.widgetManager.loadWidget(iconConfig).then(lang.hitch(this, function(widget) {
+        if (iconConfig.inPanel === false) {
+          this.widgetManager.loadWidget(iconConfig).then(lang.hitch(this, function (widget) {
             this.openedId = iconConfig.id;
             iconNode = this._getIconNodeById(iconConfig.id);
 
             // triggerd when current node is not inited, eg: click map-popup's action to open a widget&node which is in collapsed header-popup.
             // init more pane, then click icon node of current widget.
-            if(!iconNode){
+            if (!iconNode) {
               this.openedId = '';
               this._showMorePane();
               iconNode = this._getIconNodeById(iconConfig.id, true);
@@ -1193,7 +1193,7 @@ define([
             this._setOffPanelWidgetPosition(iconNode, widget);
             this.widgetManager.openWidget(widget);
             // ST: Added to listen for out of panel widgets that can be closed
-            this.own(aspect.after(widget, 'onClose', lang.hitch(this, function() {
+            this.own(aspect.after(widget, 'onClose', lang.hitch(this, function () {
               this._unSelectIcon(iconConfig.id);
               // console.log(widget);
               // if (this.openedId && this.openedId === iconNode.config.id) {
@@ -1202,27 +1202,27 @@ define([
               iconNode.focus();
             })));
           }));
-        }else{
-          this.panelManager.showPanel(iconConfig).then(lang.hitch(this, function(panel) {
+        } else {
+          this.panelManager.showPanel(iconConfig).then(lang.hitch(this, function (panel) {
             var iconNode;
-            if(!iconConfig.groupNode){
+            if (!iconConfig.groupNode) {
               iconNode = this._getIconNodeById(iconConfig.id);
               this._removeSelectedStateForIcons();
               this._addSelectedStateForIcon(iconNode);
             }
 
             this.openedId = iconConfig.id;
-            this.own(aspect.after(panel, 'onClose', lang.hitch(this, function() {
-              if(iconConfig.groupNode){
+            this.own(aspect.after(panel, 'onClose', lang.hitch(this, function () {
+              if (iconConfig.groupNode) {
                 iconConfig.groupNode.focus();
-              }else{
+              } else {
                 this._unSelectIcon(iconConfig.id);
                 iconNode.focus();
               }
             })));
 
-            this.own(on(panel.closeNode, 'keydown', lang.hitch(this, function(evt){
-              if(evt.keyCode === keys.ESCAPE){
+            this.own(on(panel.closeNode, 'keydown', lang.hitch(this, function (evt) {
+              if (evt.keyCode === keys.ESCAPE) {
                 var focusNode = iconConfig.groupNode ? iconConfig.groupNode : iconNode;
                 focusNode.focus();
               }
@@ -1231,13 +1231,13 @@ define([
         }
       },
 
-      _setOffPanelWidgetPosition: function(iconNode, widget){
+      _setOffPanelWidgetPosition: function (iconNode, widget) {
         var position = this._getDropdownPosition(iconNode,
-              this.widgetManager.getWidgetMarginBox(widget));
+          this.widgetManager.getWidgetMarginBox(widget));
         widget.setPosition(position, this.containerNode);
       },
 
-      _showMorePane: function() {
+      _showMorePane: function () {
         var i, iconConfig, moreItems = [],
           allIconConfigs = this.getAllConfigs();
         //#13788
@@ -1267,18 +1267,18 @@ define([
         html.place(this.morePane.domNode, morePaneParentNode);
         this.morePane.startup();
 
-        aspect.after(this.morePane, 'onNodeClicked', lang.hitch(this, function(node) {
+        aspect.after(this.morePane, 'onNodeClicked', lang.hitch(this, function (node) {
           this._moveConfigToHeader(node.config);
           this._createIconNodes(html.getContentBox(this.domNode));
           this._onIconClick(this._getIconNodeById(node.config.id));
         }), true);
-        aspect.after(this.morePane, 'hide', lang.hitch(this, function() {
+        aspect.after(this.morePane, 'hide', lang.hitch(this, function () {
           html.destroy(this.moreIconPaneCoverNode);
           this._morePaneNode.focus();
         }), true);
       },
 
-      _moveConfigToHeader: function(config) {
+      _moveConfigToHeader: function (config) {
         var allIconConfigs = this.getAllConfigs();
 
         var tempIndex = config.index;
@@ -1286,7 +1286,7 @@ define([
         allIconConfigs[this.headerIconCount - 1].index = tempIndex;
       },
 
-      _createCoverNode: function() {
+      _createCoverNode: function () {
         this.moreIconPaneCoverNode = html.create('div', {
           'class': 'jimu-more-icon-cover'
         }, jimuConfig.layoutId);

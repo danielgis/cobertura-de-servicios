@@ -1,5 +1,6 @@
 .jimu-ldockable-panel {
   overflow: visible;
+  inset: 50px auto 0px 0px !important;
 }
 
 .jimu-ldockable-panel .jimu-widget {
