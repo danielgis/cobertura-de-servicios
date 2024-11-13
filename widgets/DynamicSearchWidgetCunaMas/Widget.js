@@ -18,7 +18,6 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
 
     postCreate: function postCreate() {
       this.inherited(arguments);
-      this.buildMainMenuCs();
       this.map.on("update-end", this.executeZoomExtentInitial.bind(this));
     },
     onClickGroup: function onClickGroup(evt) {
@@ -36,11 +35,13 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       this.containerGroupsApCs.classList.toggle('active');
       this.containerFiltersApCs.classList.toggle('active');
       this.destroyFormSearchCs();
+      this.urlLayerSelected = null;
     },
     startup: function startup() {
       this.inherited(arguments);
     },
     onOpen: function onOpen() {
+      this.buildMainMenuCs();
       dojo.query(".groupFilterClsCs").on('click', this.onClickGroup.bind(this));
       dojo.query(".backButtonClsCs").on('click', this.onClickBack.bind(this));
     },
@@ -59,6 +60,16 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         return a.index - b.index;
       });
       this.containerGridApCs.innerHTML = '';
+      if (this.config.groups.length == 1) {
+        this.groupSelected = this.config.groups[0];
+        this.containerBackApCs.classList.remove('active');
+        this.buildFormRadioCs();
+        this.buildFormSearchCs();
+        this.buildHeaderSearchCs();
+        this.containerGroupsApCs.classList.toggle('active');
+        this.containerFiltersApCs.classList.toggle('active');
+        return;
+      }
       this.config.groups.forEach(function (group) {
         var img = document.createElement('img');
         img.src = group.logo;
@@ -165,6 +176,9 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
     destroyFormSearchCs: function destroyFormSearchCs() {
       this.containerBodyApCs.innerHTML = '';
     },
+    destroyFormRadioCs: function destroyFormRadioCs() {
+      this.radioContainerApCs.innerHTML = '';
+    },
     makeOptionCs: function makeOptionCs(options, selectControl, valueField, labelField, firstOption) {
       selectControl.innerHTML = '';
       var defaultOption = document.createElement('option');
@@ -253,6 +267,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       });
       this.formRadioContainersApCs.innerHTML = '';
 
+      var idSelected = void 0;
+
       layers.forEach(function (layer) {
         var radioItemContainer = document.createElement('div');
         radioItemContainer.classList.add('radioItemContainerCs');
@@ -261,8 +277,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         input.name = 'searchType';
         input.id = layer.id;
         if (layer.selected) {
-          input.checked = true;
-        }
+          idSelected = layer.id;
+        };
         radioItemContainer.appendChild(input);
         var label = document.createElement('label');
         label.for = layer.id;
@@ -271,6 +287,11 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         _this4.formRadioContainersApCs.appendChild(radioItemContainer);
       });
       dojo.query('.radioItemContainerCs input').on('click', this.handleRadioButtonClick.bind(this));
+      // execute event ckecked the radio button selected by id programmatically in dom
+      if (idSelected) {
+        document.getElementById(idSelected).checked = true;
+        document.getElementById(idSelected).click();
+      };
     },
     handleRadioButtonClick: function handleRadioButtonClick(event) {
       var _this5 = this;
@@ -281,16 +302,20 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       if (layerSelected) {
         this.groupSelected.layersForm.layers.forEach(function (layer) {
           if (layer.id === event.target.id) {
-            layer.selected = true;
+            // layer.selected = true;
           } else {
-            layer.selected = false;
+            // layer.selected = false;
             layer.layersId.forEach(function (layerId) {
-              _this5.map.getLayer(layerId).setVisibility(false);
+              if (_this5.map.getLayer(layerId).visible & layerSelected.layersId[0] != layerId) {
+                _this5.map.getLayer(layerId).setVisibility(false);
+              };
             });
           }
         });
         layerSelected.layersId.forEach(function (layerId) {
-          _this5.map.getLayer(layerId).setVisibility(true);
+          if (!_this5.map.getLayer(layerId).visible) {
+            _this5.map.getLayer(layerId).setVisibility(true);
+          };
         });
         this.urlLayerSelected = this.map.getLayer(layerSelected.layersId[0]).url;
       }
