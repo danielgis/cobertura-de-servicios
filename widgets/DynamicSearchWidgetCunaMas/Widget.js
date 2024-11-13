@@ -14,6 +14,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
 
     baseClass: 'dynamic-search-widget-cuna-mas',
     groupSelected: null,
+    urlLayerSelected: null,
 
     postCreate: function postCreate() {
       this.inherited(arguments);
@@ -22,11 +23,10 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
     },
     onClickGroup: function onClickGroup(evt) {
       var indexGroupSelected = Array.from(evt.target.parentNode.children).indexOf(evt.target);
-      // search group by property index
       this.groupSelected = this.config.groups.find(function (group) {
         return group.index === indexGroupSelected;
       });
-      // console.log('indexGroupSelected', this.indexGroupSelected);
+      this.buildFormRadioCs();
       this.buildFormSearchCs();
       this.buildHeaderSearchCs();
       this.containerGroupsApCs.classList.toggle('active');
@@ -70,7 +70,9 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
     },
     buildHeaderSearchCs: function buildHeaderSearchCs() {
       dojo.query('#nameSelectedCs')[0].innerHTML = this.groupSelected.label;
+      dojo.query('#nameSelectedCs')[0].style.color = this.groupSelected.color;
       dojo.query('#descSelectedCs')[0].innerHTML = this.groupSelected.description;
+      dojo.query('#descSelectedCs')[0].style.color = this.groupSelected.color;
       var img = document.createElement('img');
       img.src = this.groupSelected.logo;
       img.alt = this.groupSelected.name;
@@ -78,6 +80,18 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       img.setAttribute('data-dojo-attach-point', 'scdApCs');
       this.containerImgSelectedApCs.innerHTML = '';
       this.containerImgSelectedApCs.appendChild(img);
+    },
+    buildFormRadioCs: function buildFormRadioCs() {
+      if (this.groupSelected.layersForm) {
+        this.makeSelectorLayers(this.groupSelected.layersForm.layers);
+        if (this.groupSelected.layersForm.visible) {
+          this.radioContainerApCs.classList.add('active');
+        } else {
+          this.radioContainerApCs.classList.remove('active');
+        }
+      } else {
+        this.radioContainerApCs.classList.remove('active');
+      }
     },
     buildFormSearchCs: function buildFormSearchCs() {
       var _this2 = this;
@@ -97,8 +111,10 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         select.classList.add('comboBoxClsCs');
         select.id = filter.codeField;
         if (filter.startupData) {
-          _this2.getDataByFilter(filter.url, [filter.codeField, filter.nameField]).then(function (response) {
-            _this2.makeOptionCs(response.features, select, filter.codeField, filter.nameField);
+          var urlFilter = _this2.urlLayerSelected || filter.url;
+          var fieldsFilter = [filter.codeField, filter.nameField];
+          _this2.getDataByFilter(urlFilter, fieldsFilter).then(function (response) {
+            _this2.makeOptionCs(response.features, select, filter.codeField, filter.nameField, filter.firstOption);
           }).catch(function (err) {
             console.error('err', err);
           });
@@ -149,7 +165,14 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
     destroyFormSearchCs: function destroyFormSearchCs() {
       this.containerBodyApCs.innerHTML = '';
     },
-    makeOptionCs: function makeOptionCs(options, selectControl, valueField, labelField) {
+    makeOptionCs: function makeOptionCs(options, selectControl, valueField, labelField, firstOption) {
+      selectControl.innerHTML = '';
+      var defaultOption = document.createElement('option');
+      defaultOption.text = firstOption;
+      defaultOption.value = '';
+      defaultOption.selected = true;
+      defaultOption.disabled = true;
+      selectControl.appendChild(defaultOption);
       options.forEach(function (option) {
         var optionElement = document.createElement('option');
         optionElement.value = option.attributes[valueField];
@@ -169,7 +192,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
 
       var responseFilter = void 0;
 
-      return this.getDataByFilter(currentFilter.url, fields, where, false).then(function (response) {
+      var url = this.urlLayerSelected || currentFilter.url;
+      return this.getDataByFilter(url, fields, where, false).then(function (response) {
         responseFilter = response;
         if (!currentFilter.isZoom) {
           return null;
@@ -177,7 +201,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         if (responseFilter.features.length === 1 && responseFilter.features[0].geometry.type === 'point') {
           return _this3.map.centerAndZoom(responseFilter.features[0].geometry, 17);
         }
-        return _this3.setExtentByFilter(currentFilter.url, where);
+        return _this3.setExtentByFilter(url, where);
       }).then(function () {
         if (!currentFilter.filterAffected) {
           return;
@@ -185,13 +209,16 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         currentFilter.filterAffected.forEach(function (affectedIndex) {
           var affectedFilter = _this3.groupSelected.filters[affectedIndex];
           var affectedSelect = document.getElementById(affectedFilter.codeField);
-          affectedSelect.innerHTML = '';
-          var defaultOption = document.createElement('option');
-          defaultOption.text = affectedFilter.firstOption;
-          defaultOption.value = '';
-          affectedSelect.appendChild(defaultOption);
-          _this3.getDataByFilter(affectedFilter.url, [affectedFilter.codeField, affectedFilter.nameField], currentFilter.codeField + ' = \'' + selectedValue + '\'').then(function (data) {
-            _this3.makeOptionCs(data.features, affectedSelect, affectedFilter.codeField, affectedFilter.nameField);
+          var urlFilter = _this3.urlLayerSelected || affectedFilter.url;
+          var fieldsFilter = [affectedFilter.codeField, affectedFilter.nameField];
+          var whereFilter = currentFilter.codeField + ' = \'' + selectedValue + '\'';
+          _this3.getDataByFilter(urlFilter, fieldsFilter, whereFilter).then(function (data) {
+            _this3.makeOptionCs(data.features, affectedSelect, affectedFilter.codeField, affectedFilter.nameField, affectedFilter.firstOption);
+          }).then(function () {
+            var filterAffectedReset = affectedFilter.filterAffected;
+            while (filterAffectedReset.length > 0) {
+              filterAffectedReset = _this3.resetSelectIndexArray(filterAffectedReset);
+            }
           }).catch(function (err) {
             console.error('Error al actualizar el filtro ' + affectedFilter.label + ':', err);
           });
@@ -199,6 +226,74 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       }).catch(function (err) {
         console.error('err', err);
       });
+    },
+    resetSelectIndexArray: function resetSelectIndexArray(indexArray) {
+      var newAffectedFilters = [];
+      this.groupSelected.filters.forEach(function (filter) {
+        indexArray.forEach(function (index) {
+          if (filter.index === index) {
+            var select = document.getElementById(filter.codeField);
+            select.innerHTML = '';
+            var defaultOption = document.createElement('option');
+            defaultOption.text = filter.firstOption;
+            defaultOption.value = '';
+            select.appendChild(defaultOption);
+            newAffectedFilters.push(filter.filterAffected);
+          }
+        });
+      });
+
+      return newAffectedFilters.flat();
+    },
+    makeSelectorLayers: function makeSelectorLayers(layers) {
+      var _this4 = this;
+
+      layers.sort(function (a, b) {
+        return a.index - b.index;
+      });
+      this.formRadioContainersApCs.innerHTML = '';
+
+      layers.forEach(function (layer) {
+        var radioItemContainer = document.createElement('div');
+        radioItemContainer.classList.add('radioItemContainerCs');
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'searchType';
+        input.id = layer.id;
+        if (layer.selected) {
+          input.checked = true;
+        }
+        radioItemContainer.appendChild(input);
+        var label = document.createElement('label');
+        label.for = layer.id;
+        label.innerHTML = layer.label;
+        radioItemContainer.appendChild(label);
+        _this4.formRadioContainersApCs.appendChild(radioItemContainer);
+      });
+      dojo.query('.radioItemContainerCs input').on('click', this.handleRadioButtonClick.bind(this));
+    },
+    handleRadioButtonClick: function handleRadioButtonClick(event) {
+      var _this5 = this;
+
+      var layerSelected = this.groupSelected.layersForm.layers.find(function (layer) {
+        return layer.id === event.target.id;
+      });
+      if (layerSelected) {
+        this.groupSelected.layersForm.layers.forEach(function (layer) {
+          if (layer.id === event.target.id) {
+            layer.selected = true;
+          } else {
+            layer.selected = false;
+            layer.layersId.forEach(function (layerId) {
+              _this5.map.getLayer(layerId).setVisibility(false);
+            });
+          }
+        });
+        layerSelected.layersId.forEach(function (layerId) {
+          _this5.map.getLayer(layerId).setVisibility(true);
+        });
+        this.urlLayerSelected = this.map.getLayer(layerSelected.layersId[0]).url;
+      }
     }
   }
 

@@ -86,11 +86,9 @@
         },
         "placeholderIndex": 1,
         "id": "_25",
-        "name": "About",
         "version": "2.30",
         "closeable": true,
-        "uri": "widgets/About/Widget",
-        "config": "configs/About/config__25.json"
+        "uri": ""
       },
       {
         "position": {
@@ -98,7 +96,7 @@
           "top": 45,
           "relativeTo": "map"
         },
-        "placeholderIndex": 1,
+        "placeholderIndex": 2,
         "id": "_26"
       },
       {
@@ -107,7 +105,7 @@
           "top": 45,
           "relativeTo": "map"
         },
-        "placeholderIndex": 2,
+        "placeholderIndex": 3,
         "id": "_27"
       },
       {

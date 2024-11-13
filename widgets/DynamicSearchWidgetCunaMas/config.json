@@ -2,10 +2,47 @@
   "groups": [
     {
       "name": "ubicaCiai",
-      "label": "Ubica\nCIAI",
-      "description": "Centro de Atención Integral",
+      "label": "Cuna\nMás\nUbica",
+      "description": "Herramienta de geolocalización",
       "index": 0,
       "logo": "./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png",
+      "color": "#009dee",
+      "layersForm": {
+        "visible": true,
+        "layers": [
+          {
+            "index": 0,
+            "name": "CIAI",
+            "label": "CIAI",
+            "layersId": [
+              "cobertura_servicios_local_ciai_dev_654"
+            ],
+            "selected": true,
+            "id": "CIAI0"
+          },
+          {
+            "index": 1,
+            "name": "SA",
+            "label": "SA",
+            "layersId": [
+              "cobertura_servicios_local_sa_dev_8669"
+            ],
+            "selected": false,
+            "id": "SA1"
+          },
+          {
+            "index": 2,
+            "name": "CIAISA",
+            "label": "CIAI / SA",
+            "layersId": [
+              "cobertura_servicios_local_ciai_dev_654",
+              "cobertura_servicios_local_sa_dev_8669"
+            ],
+            "selected": false,
+            "id": "CIAISA2"
+          }
+        ]
+      },
       "filters": [
         {
           "codeField": "iddep",
@@ -56,7 +93,7 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 3,
-          "filterAffected": null,
+          "filterAffected": [],
           "firstOption": "Seleccione el Centro Poblado",
           "startupData": false,
           "isZoom": true
@@ -65,10 +102,11 @@
     },
     {
       "name": "ubicaSaf",
-      "label": "Ubica\nSAF",
-      "description": "Servicio de Acompañamiento a Familias",
+      "label": "Cuna\nMás\nUbica",
+      "description": "Herramienta de geolocalización",
       "index": 1,
-      "logo": "./widgets/DynamicSearchWidgetCunaMas/images/logo_ciai.png",
+      "logo": "./widgets/DynamicSearchWidgetCunaMas/images/logo_saf.png",
+      "color": "#ff007d",
       "filters": [
         {
           "codeField": "iddep",
@@ -116,7 +154,7 @@
           "type": "select",
           "url": "https://geosisfoh.midis.gob.pe/server/rest/services/Hosted/cobertura_servicios_local_ciai_dev/FeatureServer/0",
           "index": 3,
-          "filterAffected": null,
+          "filterAffected": [],
           "firstOption": "Seleccione el Centro Poblado",
           "startupData": false,
           "isZoom": true
