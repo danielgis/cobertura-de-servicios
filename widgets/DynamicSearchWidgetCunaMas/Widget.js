@@ -281,10 +281,16 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         return _this3.setExtentByFilter(url, where);
       }).then(function () {
         var promises = _this3.groupSelected.filters.map(function (filter, index) {
-          if (evt.target.id !== filter.codeField) {
+          if (selectedValue === '0') {
             var urlFilter = _this3.urlLayerSelected || filter.url;
             var fieldsFilter = [filter.codeField, filter.nameField];
             return _this3.getDataByFilter(urlFilter, fieldsFilter, where).then(function (data) {
+              _this3.makeOptionCs(data.features, document.getElementById(filter.codeField), filter.codeField, filter.nameField, filter.firstOption);
+            });
+          } else if (evt.target.id !== filter.codeField) {
+            var _urlFilter = _this3.urlLayerSelected || filter.url;
+            var _fieldsFilter = [filter.codeField, filter.nameField];
+            return _this3.getDataByFilter(_urlFilter, _fieldsFilter, where).then(function (data) {
               _this3.makeOptionCs(data.features, document.getElementById(filter.codeField), filter.codeField, filter.nameField, filter.firstOption);
             });
           }
@@ -399,6 +405,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
           where.push('(' + filter.codeField + ' = \'' + selectedValue + '\')');
         };
       });
+      // console.log('where', where.join(' AND '));
       return where.join(' AND ');
     }
   }
