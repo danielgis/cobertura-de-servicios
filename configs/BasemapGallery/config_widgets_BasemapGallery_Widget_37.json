@@ -3,25 +3,8 @@
     "mode": 2,
     "basemaps": [
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_1_1732583674263.png",
-        "title": "OpenStreetMap",
-        "layers": [
-          {
-            "opacity": 1,
-            "title": "OpenStreetMap",
-            "visibility": true,
-            "layerType": "OpenStreetMap",
-            "type": "OpenStreetMap",
-            "id": "OpenStreetMap"
-          }
-        ],
-        "spatialReference": {
-          "wkid": 102100
-        }
-      },
-      {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_2_1732583674264.png",
         "title": "Imágenes",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_1_1732654216606.png",
         "layers": [
           {
             "opacity": 1,
@@ -465,8 +448,8 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_3_1732583674266.png",
         "title": "Imágenes con etiquetas",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_2_1732654216610.png",
         "layers": [
           {
             "opacity": 1,
@@ -919,8 +902,8 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_4_1732583674267.png",
         "title": "Topográfico",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_3_1732654216612.png",
         "layers": [
           {
             "opacity": 1,
@@ -1225,8 +1208,8 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_5_1732583674268.png",
         "title": "Calles",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_4_1732654216613.png",
         "layers": [
           {
             "opacity": 1,

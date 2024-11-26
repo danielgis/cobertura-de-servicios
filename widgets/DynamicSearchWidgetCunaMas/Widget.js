@@ -1,22 +1,13 @@
-define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin', "jimu/WidgetManager", "esri/tasks/QueryTask", "esri/tasks/query", "dojo/Deferred", "dojo/promise/all", 'esri/dijit/util/busyIndicator', 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js'], function (declare, BaseWidget, _WidgetsInTemplateMixin, WidgetManager, QueryTask, Query, Deferred, all, BusyIndicator, jquery, select2) {
-  // import StatisticDefinition from "esri/tasks/StatisticDefinition"
+define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin', "jimu/WidgetManager", "esri/tasks/QueryTask", "esri/tasks/query", "dojo/Deferred", "dojo/promise/all", 'esri/dijit/util/busyIndicator', "jimu/dijit/Message", 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js'], function (declare, BaseWidget, _WidgetsInTemplateMixin, WidgetManager, QueryTask, Query, Deferred, all, BusyIndicator, Message, jquery, select2) {
 
   var fontAwesome = document.createElement('script');
   fontAwesome.src = 'https://use.fontawesome.com/releases/v5.3.1/js/all.js';
   document.head.appendChild(fontAwesome);
 
-  // add link an script
-  // <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
-  // <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
   var select2Css = document.createElement('link');
   select2Css.rel = 'stylesheet';
   select2Css.href = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css';
   document.head.appendChild(select2Css);
-
-  // const select2Js = document.createElement('script');
-  // select2Js.src = 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js';
-  // document.head.appendChild(select2Js);
 
   var isFirstLoad = false;
 
@@ -33,6 +24,16 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
     postCreate: function postCreate() {
       this.inherited(arguments);
       this.map.on("update-end", this.executeZoomExtentInitial.bind(this));
+    },
+    showMessageCs: function showMessageCs(message) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'message';
+
+      var title = '' + this.nls.widgetTitle;
+      new Message({
+        type: type,
+        titleLabel: title,
+        message: message
+      });
     },
     onClickGroup: function onClickGroup(evt) {
       var indexGroupSelected = Array.from(evt.target.parentNode.children).indexOf(evt.target);
@@ -146,7 +147,13 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
           var urlFilter = _this2.urlLayerSelected || filter.url;
           var fieldsFilter = [filter.codeField, filter.nameField];
           _this2.getDataByFilter(urlFilter, fieldsFilter).then(function (response) {
-            _this2.makeOptionCs(response.features, select, filter.codeField, filter.nameField, filter.firstOption);
+            if (response.features.length === 1000) {
+              // disable select
+              $('#' + filter.codeField).prop("disabled", true);
+            } else {
+              $('#' + filter.codeField).prop("disabled", false);
+              _this2.makeOptionCs(response.features, select, filter.codeField, filter.nameField, filter.firstOption);
+            }
           }).catch(function (err) {
             console.error('err', err);
           });
@@ -278,20 +285,40 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         if (responseFilter.features.length === 1 && responseFilter.features[0].geometry.type === 'point') {
           return _this3.map.centerAndZoom(responseFilter.features[0].geometry, 17);
         }
-        return _this3.setExtentByFilter(url, where);
+        if (responseFilter.features.length === 0) {
+          throw new Error('No se encontraron resultados de ' + _this3.labelLayerSelected + ' en esta ubicaci\xF3n');
+          // console.log("No se encontraron resultados");
+          // return;
+        }
+        return _this3.setExtentByFilter(url, where);y;
       }).then(function () {
+        if (responseFilter.features.length === 0) {
+          return;
+        }
         var promises = _this3.groupSelected.filters.map(function (filter, index) {
           if (selectedValue === '0') {
             var urlFilter = _this3.urlLayerSelected || filter.url;
             var fieldsFilter = [filter.codeField, filter.nameField];
             return _this3.getDataByFilter(urlFilter, fieldsFilter, where).then(function (data) {
-              _this3.makeOptionCs(data.features, document.getElementById(filter.codeField), filter.codeField, filter.nameField, filter.firstOption);
+              if (data.features.length === 1000) {
+                // disable select
+                $('#' + filter.codeField).prop("disabled", true);
+              } else {
+                $('#' + filter.codeField).prop("disabled", false);
+                _this3.makeOptionCs(data.features, document.getElementById(filter.codeField), filter.codeField, filter.nameField, filter.firstOption);
+              }
             });
           } else if (evt.target.id !== filter.codeField) {
             var _urlFilter = _this3.urlLayerSelected || filter.url;
             var _fieldsFilter = [filter.codeField, filter.nameField];
             return _this3.getDataByFilter(_urlFilter, _fieldsFilter, where).then(function (data) {
-              _this3.makeOptionCs(data.features, document.getElementById(filter.codeField), filter.codeField, filter.nameField, filter.firstOption);
+              if (data.features.length === 1000) {
+                // disable select
+                $('#' + filter.codeField).prop("disabled", true);
+              } else {
+                $('#' + filter.codeField).prop("disabled", false);
+                _this3.makeOptionCs(data.features, document.getElementById(filter.codeField), filter.codeField, filter.nameField, filter.firstOption);
+              }
             });
           }
         });
@@ -326,7 +353,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       }).then(function () {
         _this3.busyIndicator.hide();
       }).catch(function (err) {
-        console.error('err', err);
+        _this3.showMessageCs(err.message, 'error');
+        // console.error('err', err);
         _this3.busyIndicator.hide();
       });
     },
@@ -391,6 +419,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
           };
         });
         this.urlLayerSelected = this.map.getLayer(layerSelected.layersId[0]).url;
+        this.labelLayerSelected = layerSelected.label;
       }
     },
     manageWhere: function manageWhere() {

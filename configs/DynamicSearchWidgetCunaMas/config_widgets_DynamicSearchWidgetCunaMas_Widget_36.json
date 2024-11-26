@@ -50,7 +50,8 @@
             "label": "SAF",
             "layersId": [
               "cobertura_servicios_vivienda_saf_dev_2_507",
-              "cobertura_servicios_vivienda_saf_dev_2_507_2727"
+              "cobertura_servicios_vivienda_saf_grid_20k_dev_3_5070",
+              "cobertura_servicios_vivienda_saf_grid_10k_dev_3_4373"
             ],
             "selected": false,
             "id": "SAF3",
@@ -143,7 +144,8 @@
             "label": "SAF",
             "layersId": [
               "cobertura_servicios_vivienda_saf_dev_2_507",
-              "cobertura_servicios_vivienda_saf_dev_2_507_2727"
+              "cobertura_servicios_vivienda_saf_grid_20k_dev_3_5070",
+              "cobertura_servicios_vivienda_saf_grid_10k_dev_3_4373"
             ],
             "selected": true,
             "id": "SAF0",
