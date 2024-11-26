@@ -3,7 +3,7 @@
     "mode": 2,
     "basemaps": [
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_1_1732035507645.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_1_1732582978984.png",
         "title": "OpenStreetMap",
         "layers": [
           {
@@ -20,7 +20,7 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_2_1732035507647.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_2_1732582978985.png",
         "title": "Imágenes",
         "layers": [
           {
@@ -465,7 +465,7 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_3_1732035507648.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_3_1732582978987.png",
         "title": "Calles",
         "layers": [
           {
@@ -712,7 +712,7 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_4_1732035507650.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_4_1732582978988.png",
         "title": "Topográfico",
         "layers": [
           {
@@ -959,7 +959,7 @@
         }
       },
       {
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_5_1732035507651.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_5_1732582978989.png",
         "title": "Imágenes con etiquetas",
         "layers": [
           {

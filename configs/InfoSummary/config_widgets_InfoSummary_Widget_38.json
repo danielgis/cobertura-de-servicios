@@ -3722,57 +3722,25 @@
       "symbolData": {
         "symbolType": "LayerSymbol",
         "symbol": {
-          "color": [
-            110,
-            0,
-            135,
-            255
-          ],
-          "size": 4,
           "angle": 0,
           "xoffset": 0,
           "yoffset": 0,
-          "type": "esriSMS",
-          "style": "esriSMSCircle",
-          "outline": {
-            "color": [
-              0,
-              0,
-              0,
-              255
-            ],
-            "width": 1,
-            "type": "esriSLS",
-            "style": "esriSLSSolid"
-          }
+          "type": "esriPMS",
+          "url": "https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png",
+          "width": 19.5,
+          "height": 19.5
         },
         "clusteringEnabled": false,
         "displayFeatureCount": false,
         "_highLightColor": "#ffffff",
         "icon": {
-          "color": [
-            110,
-            0,
-            135,
-            255
-          ],
-          "size": 4,
           "angle": 0,
           "xoffset": 0,
           "yoffset": 0,
-          "type": "esriSMS",
-          "style": "esriSMSCircle",
-          "outline": {
-            "color": [
-              0,
-              0,
-              0,
-              255
-            ],
-            "width": 1,
-            "type": "esriSLS",
-            "style": "esriSLSSolid"
-          }
+          "type": "esriPMS",
+          "url": "https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png",
+          "width": 21,
+          "height": 21
         },
         "iconType": "LayerIcon",
         "renderer": {
@@ -3782,36 +3750,22 @@
             "opacityInfo": null
           },
           "symbol": {
-            "style": "circle",
-            "color": {
-              "r": 110,
-              "g": 0,
-              "b": 135
-            },
-            "size": 5.333333333333333,
-            "outline": {
-              "width": 1.3333333333333333,
-              "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0
-              },
-              "style": "solid",
-              "_inherited": {
-                "p": 2
-              }
-            },
+            "url": "https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png",
+            "width": 28,
+            "height": 28,
+            "size": 16,
             "_inherited": {
               "p": 2
             }
           },
+          "isMaxInclusive": true,
           "_inherited": {
             "p": 1
           }
         },
-        "s": "<svg overflow=\"hidden\" width=\"26\" height=\"26\" style=\"touch-action: none;\"><defs></defs><circle fill=\"rgb(110, 0, 135)\" fill-opacity=\"1\" stroke=\"rgb(0, 0, 0)\" stroke-opacity=\"1\" stroke-width=\"1.3333333333333333\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" cx=\"0\" cy=\"0\" r=\"2.6666666666666665\" fill-rule=\"evenodd\" stroke-dasharray=\"none\" dojoGfxStrokeStyle=\"solid\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,13.00000000,13.00000000)\"></circle></svg>",
+        "s": "<svg overflow=\"hidden\" width=\"26\" height=\"26\" style=\"touch-action: none;\"><defs></defs><image fill-opacity=\"0\" stroke=\"none\" stroke-opacity=\"0\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" x=\"-13\" y=\"-13\" width=\"26\" height=\"26\" preserveAspectRatio=\"none\" xlink:href=\"https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,13.00000000,13.00000000)\"></image></svg>",
         "svg": {},
-        "panelHTML": "<svg overflow=\"hidden\" width=\"44\" height=\"44\" style=\"touch-action: none;\"><defs></defs><circle fill=\"rgb(110, 0, 135)\" fill-opacity=\"1\" stroke=\"rgb(0, 0, 0)\" stroke-opacity=\"1\" stroke-width=\"1.3333333333333333\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" cx=\"0\" cy=\"0\" r=\"2.6666666666666665\" fill-rule=\"evenodd\" stroke-dasharray=\"none\" dojoGfxStrokeStyle=\"solid\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,22.00000000,22.00000000)\"></circle></svg>",
+        "panelHTML": "<svg overflow=\"hidden\" width=\"44\" height=\"44\" style=\"touch-action: none;\"><defs></defs><image fill-opacity=\"0\" stroke=\"none\" stroke-opacity=\"0\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" x=\"-22\" y=\"-22\" width=\"44\" height=\"44\" preserveAspectRatio=\"none\" xlink:href=\"https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,22.00000000,22.00000000)\"></image></svg>",
         "userDefinedSymbol": false,
         "layerId": "cobertura_servicios_local_sa_dev_2_7270",
         "featureDisplayOptions": {
@@ -3850,29 +3804,15 @@
           "opacityInfo": null
         },
         "symbol": {
-          "style": "circle",
-          "color": {
-            "r": 110,
-            "g": 0,
-            "b": 135
-          },
-          "size": 5.333333333333333,
-          "outline": {
-            "width": 1.3333333333333333,
-            "color": {
-              "r": 0,
-              "g": 0,
-              "b": 0
-            },
-            "style": "solid",
-            "_inherited": {
-              "p": 2
-            }
-          },
+          "url": "https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png",
+          "width": 28,
+          "height": 28,
+          "size": 16,
           "_inherited": {
             "p": 2
           }
         },
+        "isMaxInclusive": true,
         "_inherited": {
           "p": 1
         }
@@ -7510,10 +7450,10 @@
         "titleHasAsyncExpressions": false,
         "contentHasAsyncExpressions": true
       },
-      "rendererJson": "{\"type\":\"simple\",\"symbol\":{\"color\":[110,0,135,255],\"size\":4,\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"type\":\"esriSMS\",\"style\":\"esriSMSCircle\",\"outline\":{\"color\":[0,0,0,255],\"width\":1,\"type\":\"esriSLS\",\"style\":\"esriSLSSolid\"}}}",
+      "rendererJson": "{\"type\":\"simple\",\"symbol\":{\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"type\":\"esriPMS\",\"url\":\"https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png\",\"width\":19.5,\"height\":19.5}}",
       "bypassDrawingInfo": false,
-      "panelImageData": "<svg overflow=\"hidden\" width=\"44\" height=\"44\" style=\"touch-action: none;\"><defs></defs><circle fill=\"rgb(110, 0, 135)\" fill-opacity=\"1\" stroke=\"rgb(0, 0, 0)\" stroke-opacity=\"1\" stroke-width=\"1.3333333333333333\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" cx=\"0\" cy=\"0\" r=\"2.6666666666666665\" fill-rule=\"evenodd\" stroke-dasharray=\"none\" dojoGfxStrokeStyle=\"solid\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,22.00000000,22.00000000)\"></circle></svg>",
-      "imageData": "<div class=\"imageDataGFX\"><svg overflow=\"hidden\" width=\"28\" height=\"28\" style=\"touch-action: none;\"><defs></defs><circle fill=\"rgb(110, 0, 135)\" fill-opacity=\"1\" stroke=\"rgb(0, 0, 0)\" stroke-opacity=\"1\" stroke-width=\"1.3333333333333333\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" cx=\"0\" cy=\"0\" r=\"2.6666666666666665\" fill-rule=\"evenodd\" stroke-dasharray=\"none\" dojogfxstrokestyle=\"solid\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,14.00000000,14.00000000)\"></circle></svg></div>"
+      "panelImageData": "<svg overflow=\"hidden\" width=\"44\" height=\"44\" style=\"touch-action: none;\"><defs></defs><image fill-opacity=\"0\" stroke=\"none\" stroke-opacity=\"0\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" x=\"-22\" y=\"-22\" width=\"44\" height=\"44\" preserveAspectRatio=\"none\" xlink:href=\"https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,22.00000000,22.00000000)\"></image></svg>",
+      "imageData": "<div class=\"imageDataGFX\"><svg overflow=\"hidden\" width=\"28\" height=\"28\" style=\"touch-action: none;\"><defs></defs><image fill-opacity=\"0\" stroke=\"none\" stroke-opacity=\"0\" stroke-width=\"1\" stroke-linecap=\"butt\" stroke-linejoin=\"miter\" stroke-miterlimit=\"4\" x=\"-14\" y=\"-14\" width=\"28\" height=\"28\" preserveAspectRatio=\"none\" xlink:href=\"https://danielgis.github.io/cobertura-de-servicios/widgets/DynamicSearchWidgetCunaMas/images/icon_sa.png\" transform=\"matrix(1.00000000,0.00000000,0.00000000,1.00000000,14.00000000,14.00000000)\"></image></svg></div>"
     },
     {
       "layer": "cobertura_servicios_vivienda_saf_dev_2_507",
