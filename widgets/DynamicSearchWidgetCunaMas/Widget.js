@@ -68,9 +68,14 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       if (isFirstLoad) {
         return;
       }
+      this.executeHomeExtent();
+      // const homeWidget = WidgetManager.getInstance().getWidgetsByName("HomeButton");
+      // this.map.setExtent(homeWidget[0].homeDijit.extent);
+      isFirstLoad = true;
+    },
+    executeHomeExtent: function executeHomeExtent() {
       var homeWidget = WidgetManager.getInstance().getWidgetsByName("HomeButton");
       this.map.setExtent(homeWidget[0].homeDijit.extent);
-      isFirstLoad = true;
     },
     buildMainMenuCs: function buildMainMenuCs() {
       var _this = this;
@@ -126,11 +131,20 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
     buildFormSearchCs: function buildFormSearchCs() {
       var _this2 = this;
 
+      this.busyIndicator.show();
       var filters = this.groupSelected.filters;
       filters.sort(function (a, b) {
         return a.index - b.index;
       });
       this.containerBodyApCs.innerHTML = '';
+
+      var labelReset = document.createElement('p');
+      labelReset.classList.add('resetFilterClsCs');
+      labelReset.innerHTML = this.nls.restoreLabelCs;
+      this.containerBodyApCs.appendChild(labelReset);
+
+      labelReset.addEventListener('click', this.resetAllOpionSelected.bind(this));
+
       filters.forEach(function (filter, index) {
         var label = document.createElement('p');
         label.classList.add('labelComboBoxClsCs');
@@ -158,21 +172,17 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
             console.error('err', err);
           });
         };
-        // select.select2({
-        //   tags: true,
-        //   onchange: this.onChangeFilterCs.bind(this)
-        // })
-        // select.addEventListener('change.select2', (event) => this.onChangeFilterCs(event, index));
-        // the same code as js vanilla with jquery
         _this2.containerBodyApCs.appendChild(select);
         $('#' + filter.codeField).on('select2:select', function (event) {
           return _this2.onChangeFilterCs(event, index);
         });
+        // $(`#${filter.codeField}`).on('select2:clear', (event) => this.onChangeFilterCs(event, index));
         $('#' + filter.codeField).select2({
           tags: true,
           placeholder: filter.firstOption
           // allowClear: true
         });
+        _this2.busyIndicator.hide();
       });
     },
     getDataByFilter: function getDataByFilter(url, fields) {
@@ -277,6 +287,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       var responseFilter = void 0;
 
       var url = this.urlLayerSelected || currentFilter.url;
+      var layersSelected = this.layersSelected;
+
       return this.getDataByFilter(url, fields, where, false).then(function (response) {
         responseFilter = response;
         if (!currentFilter.isZoom) {
@@ -351,12 +363,29 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
         //       });
         //   });
       }).then(function () {
+        layersSelected.layersId.forEach(function (layer) {
+          // console.log('layer', layer);
+          _this3.map.getLayer(layer).setDefinitionExpression(where);
+        });
         _this3.busyIndicator.hide();
       }).catch(function (err) {
         _this3.showMessageCs(err.message, 'error');
         // console.error('err', err);
         _this3.busyIndicator.hide();
       });
+    },
+    getCountByWhere: function getCountByWhere(ulr, where) {
+      var deferred = new Deferred();
+      var queryTask = new QueryTask(ulr);
+      var query = new Query();
+      query.where = where;
+      query.returnGeometry = false;
+      queryTask.executeForCount(query).then(function (response) {
+        deferred.resolve(response);
+      }).catch(function (err) {
+        deferred.reject(err);
+      });
+      return deferred.promise;
     },
     makeSelectorLayers: function makeSelectorLayers(layers) {
       var _this4 = this;
@@ -403,6 +432,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       var layerSelected = this.groupSelected.layersForm.layers.find(function (layer) {
         return layer.id === event.target.id;
       });
+      this.layersSelected = layerSelected;
       if (layerSelected) {
         this.groupSelected.layersForm.layers.forEach(function (layer) {
           if (layer.id === event.target.id) {} else {
@@ -418,6 +448,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
             _this5.map.getLayer(layerId).setVisibility(true);
           };
         });
+
         this.urlLayerSelected = this.map.getLayer(layerSelected.layersId[0]).url;
         this.labelLayerSelected = layerSelected.label;
       }
@@ -436,6 +467,18 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       });
       // console.log('where', where.join(' AND '));
       return where.join(' AND ');
+    },
+    resetAllOpionSelected: function resetAllOpionSelected(evt) {
+      var _this6 = this;
+
+      // execute buildFormSearchCs
+      // this.busyIndicator.show();
+
+      this.buildFormSearchCs();
+      this.layersSelected.layersId.forEach(function (layerId) {
+        _this6.map.getLayer(layerId).setDefinitionExpression(_this6.whereDefault);
+      });
+      this.executeHomeExtent();
     }
   }
 
