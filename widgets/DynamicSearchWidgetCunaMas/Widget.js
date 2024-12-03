@@ -182,8 +182,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
           placeholder: filter.firstOption
           // allowClear: true
         });
-        _this2.busyIndicator.hide();
       });
+      this.busyIndicator.hide();
     },
     getDataByFilter: function getDataByFilter(url, fields) {
       var where = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.whereDefault;
@@ -206,6 +206,8 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       return deferred.promise;
     },
     setExtentByFilter: function setExtentByFilter(url, where) {
+      var expand = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1.1;
+
       var self = this;
       var deferred = new Deferred();
       var queryTask = new QueryTask(url);
@@ -214,7 +216,7 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       query.returnGeometry = true;
 
       queryTask.executeForExtent(query).then(function (response) {
-        self.map.setExtent(response.extent.expand(1.1), true);
+        self.map.setExtent(response.extent.expand(expand), true);
         deferred.resolve(response);
       }).catch(function (err) {
         console.error('err', err);
@@ -289,20 +291,33 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       var url = this.urlLayerSelected || currentFilter.url;
       var layersSelected = this.layersSelected;
 
+      var webmap = this.map;
+
       return this.getDataByFilter(url, fields, where, false).then(function (response) {
         responseFilter = response;
-        if (!currentFilter.isZoom) {
+        if (!currentFilter.isZoom && !currentFilter.anotherZoom) {
           return null;
         }
-        if (responseFilter.features.length === 1 && responseFilter.features[0].geometry.type === 'point') {
-          return _this3.map.centerAndZoom(responseFilter.features[0].geometry, 17);
-        }
-        if (responseFilter.features.length === 0) {
-          throw new Error('No se encontraron resultados de ' + _this3.labelLayerSelected + ' en esta ubicaci\xF3n');
-          // console.log("No se encontraron resultados");
-          // return;
-        }
-        return _this3.setExtentByFilter(url, where);y;
+        if (currentFilter.isZoom) {
+          if (responseFilter.features.length === 1 && responseFilter.features[0].geometry.type === 'point') {
+            return _this3.map.centerAndZoom(responseFilter.features[0].geometry, 17);
+          }
+          if (responseFilter.features.length === 0) {
+            throw new Error('No se encontraron resultados de ' + _this3.labelLayerSelected + ' en esta ubicaci\xF3n');
+            // console.log("No se encontraron resultados");
+            // return;
+          }
+          return _this3.setExtentByFilter(url, where);
+        };
+        if (currentFilter.anotherZoom) {
+          var whereLimit = _this3.manageWhereLimits();
+          webmap.getLayer(currentFilter.anotherZoom.idLayer).setDefinitionExpression(whereLimit);
+          // if (selectedValue === '0') {
+          //   return;
+          // };
+          // const whereAnother = `${currentFilter.anotherZoom.field} = '${selectedValue}'`;
+          return _this3.setExtentByFilter(currentFilter.anotherZoom.url, whereLimit, expand = 1);
+        };
       }).then(function () {
         if (responseFilter.features.length === 0) {
           return;
@@ -365,8 +380,19 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
       }).then(function () {
         layersSelected.layersId.forEach(function (layer) {
           // console.log('layer', layer);
-          _this3.map.getLayer(layer).setDefinitionExpression(where);
+          // search fields in where, but not set definition expression
+          var verifyFields = webmap.getLayer(layer).fields.filter(function (field) {
+            if (where.includes(field.name)) {
+              return field.name;
+            };
+          });
+
+          if (verifyFields.length === 0) {
+            return;
+          }
+          webmap.getLayer(layer).setDefinitionExpression(where);
         });
+        // return all(promises);
         _this3.busyIndicator.hide();
       }).catch(function (err) {
         _this3.showMessageCs(err.message, 'error');
@@ -465,6 +491,27 @@ define(['dojo/_base/declare', 'jimu/BaseWidget', 'dijit/_WidgetsInTemplateMixin'
           where.push('(' + filter.codeField + ' = \'' + selectedValue + '\')');
         };
       });
+      // console.log('where', where.join(' AND '));
+      return where.join(' AND ');
+    },
+    manageWhereLimits: function manageWhereLimits() {
+      var where = [];
+      this.groupSelected.filters.forEach(function (filter) {
+        if (filter.anotherZoom) {
+          var select = document.getElementById(filter.codeField);
+          // get value selected
+          var selectedIndex = select.selectedIndex;
+          if (selectedIndex > 1) {
+            // create where
+            var selectedValue = select.options[selectedIndex].value;
+            where.push('(' + filter.anotherZoom.field + ' = \'' + selectedValue + '\')');
+          };
+        }
+      });
+
+      if (where.length === 0) {
+        return this.whereDefault;
+      };
       // console.log('where', where.join(' AND '));
       return where.join(' AND ');
     },

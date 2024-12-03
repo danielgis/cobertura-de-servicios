@@ -3,16 +3,16 @@
   height: 100%;
 }
 
-.jimu-widget-InfoSummary .legendLayer{
+.jimu-widget-InfoSummary .legendLayer {
   font-size: 12px;
 }
 
-.jimu-widget-InfoSummary .legendOff{
+.jimu-widget-InfoSummary .legendOff {
   overflow: hidden;
   display: none;
 }
 
-.jimu-widget-InfoSummary .legendOn{
+.jimu-widget-InfoSummary .legendOn {
   display: block;
   width: 100%;
   visibility: visible;
@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 
-.jimu-widget-InfoSummary .featureItem{
+.jimu-widget-InfoSummary .featureItem {
   display: block;
   width: 100%;
   visibility: visible;
@@ -30,7 +30,7 @@
   min-height: 30px;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .featureItem{
+.jimu-rtl .jimu-widget-InfoSummary .featureItem {
   display: block;
   width: 100%;
   visibility: visible;
@@ -170,7 +170,7 @@ of colors for dark...really just doing this to change colors*/
   width: 100%;
   visibility: visible;
   cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
   float: left;
   min-height: 30px;
 }
@@ -180,16 +180,18 @@ of colors for dark...really just doing this to change colors*/
   width: 100%;
   visibility: visible;
   cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
   float: right;
   min-height: 30px;
 }
 
 .jimu-widget-InfoSummary .featureItem-dart:hover {
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
 }
+
 /* Code for accessibility : inner focus css added*/
-.jimu-widget-InfoSummary .groupItem-dart:focus, .jimu-widget-InfoSummary .rec-dart:focus,
+.jimu-widget-InfoSummary .groupItem-dart:focus,
+.jimu-widget-InfoSummary .rec-dart:focus,
 .jimu-widget-InfoSummary .featureItem-dart:focus {
   outline: 2px solid #24B5CC !important;
   outline-offset: -2px;
@@ -199,7 +201,7 @@ of colors for dark...really just doing this to change colors*/
   display: block;
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
   float: left;
   overflow: hidden;
   text-align: -webkit-left;
@@ -211,7 +213,7 @@ of colors for dark...really just doing this to change colors*/
   display: block;
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
   float: right;
   overflow: hidden;
   text-align: -webkit-right;
@@ -219,23 +221,23 @@ of colors for dark...really just doing this to change colors*/
   text-align: right;
 }
 
-.jimu-widget-InfoSummary .groupItemTitle-dart:hover .groupItemImageUp-dart{
+.jimu-widget-InfoSummary .groupItemTitle-dart:hover .groupItemImageUp-dart {
   background-image: url(../images/_nav_up.png);
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
 }
 
-.jimu-widget-InfoSummary .groupItemTitle-dart:hover .groupItemImageDown-dart{
+.jimu-widget-InfoSummary .groupItemTitle-dart:hover .groupItemImageDown-dart {
   background-image: url(../images/_nav_down.png);
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
 }
 
-.jimu-widget-InfoSummary .groupItemTitle-dart{
+.jimu-widget-InfoSummary .groupItemTitle-dart {
   width: 100%;
   height: 30px;
   display: table;
 }
 
-.jimu-widget-InfoSummary .groupItemImage-dart{
+.jimu-widget-InfoSummary .groupItemImage-dart {
   width: 25px;
   height: 12px;
   cursor: pointer;
@@ -249,10 +251,10 @@ of colors for dark...really just doing this to change colors*/
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   border-radius: 10px;
-  border: 2px solid rgba(0,0,0,.5);
+  border: 2px solid rgba(0, 0, 0, .5);
 }
 
-.jimu-widget-InfoSummary .groupItemImageUp-dart{
+.jimu-widget-InfoSummary .groupItemImageUp-dart {
   background-image: url(../images/_nav_up.png);
 }
 
@@ -292,9 +294,9 @@ of colors for dark...really just doing this to change colors*/
   background-image: url(../images/_nav_up.png);
   bottom: -1px;
   background-position-y: 2px;
-  border-top: 1px solid rgba(0,0,0,.5);
-  border-left: 1px solid rgba(0,0,0,.5);
-  border-right: 1px solid rgba(0,0,0,.5);
+  border-top: 1px solid rgba(0, 0, 0, .5);
+  border-left: 1px solid rgba(0, 0, 0, .5);
+  border-right: 1px solid rgba(0, 0, 0, .5);
   -webkit-border-top-radius: 8px;
   -moz-border-top-radius: 8px;
   -o-border-top-radius: 8px;
@@ -308,7 +310,7 @@ of colors for dark...really just doing this to change colors*/
   background-image: url(../images/_nav_down.png);
   bottom: -5px;
   background-position-y: -1px;
-  border-bottom: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
   -webkit-border-bottom-radius: 8px;
   -moz-border-bottom-radius: 8px;
   -o-border-bottom-radius: 8px;
@@ -320,24 +322,24 @@ of colors for dark...really just doing this to change colors*/
 
 /*end dart specific settings*/
 
-.jimu-widget-InfoSummary .groupField{
-  text-align: left; 
+.jimu-widget-InfoSummary .groupField {
+  text-align: left;
   display: table-cell;
   font-size: 14px;
   width: 100%;
   padding-left: 5px;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .groupField{
-  text-align: right; 
+.jimu-rtl .jimu-widget-InfoSummary .groupField {
+  text-align: right;
   display: table-cell;
   font-size: 14px;
   width: 100%;
   padding-right: 5px;
 }
 
-.jimu-widget-InfoSummary .groupFieldImage{
-  text-align: left; 
+.jimu-widget-InfoSummary .groupFieldImage {
+  text-align: left;
   display: table-cell;
   font-size: 14px;
   width: 100%;
@@ -345,8 +347,8 @@ of colors for dark...really just doing this to change colors*/
   padding-left: 10px;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .groupFieldImage{
-  text-align: right; 
+.jimu-rtl .jimu-widget-InfoSummary .groupFieldImage {
+  text-align: right;
   display: table-cell;
   font-size: 14px;
   width: 100%;
@@ -354,7 +356,7 @@ of colors for dark...really just doing this to change colors*/
   padding-right: 10px;
 }
 
-.jimu-widget-InfoSummary .groupItem{
+.jimu-widget-InfoSummary .groupItem {
   display: block;
   width: 100%;
   cursor: pointer;
@@ -366,7 +368,7 @@ of colors for dark...really just doing this to change colors*/
   text-align: left;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .groupItem{
+.jimu-rtl .jimu-widget-InfoSummary .groupItem {
   display: block;
   width: 100%;
   cursor: pointer;
@@ -378,31 +380,32 @@ of colors for dark...really just doing this to change colors*/
   text-align: right;
 }
 
-.jimu-widget-InfoSummary .groupItemTitle:hover .groupItemImageUp{
+.jimu-widget-InfoSummary .groupItemTitle:hover .groupItemImageUp {
   background-image: url(../images/_nav_up.png);
   background-color: gray;
 }
 
-.jimu-widget-InfoSummary .groupItemTitle:hover .groupItemImageDown{
+.jimu-widget-InfoSummary .groupItemTitle:hover .groupItemImageDown {
   background-image: url(../images/_nav_down.png);
   background-color: gray;
 }
 
-.jimu-widget-InfoSummary .groupItemTitle{
+.jimu-widget-InfoSummary .groupItemTitle {
   width: 100%;
   height: 30px;
   display: table;
   line-height: 30px;
 }
 
-.jimu-widget-InfoSummary .groupItemTitle:focus, .jimu-widget-InfoSummary .featureItem:focus, 
+.jimu-widget-InfoSummary .groupItemTitle:focus,
+.jimu-widget-InfoSummary .featureItem:focus,
 .jimu-widget-InfoSummary .rec:focus {
   outline: 2px solid #24B5CC !important;
   outline-offset: -2px;
   border: 1px solid #24B5CC;
 }
 
-.jimu-widget-InfoSummary .groupItemImage{
+.jimu-widget-InfoSummary .groupItemImage {
   width: 25px;
   height: 12px;
   cursor: pointer;
@@ -419,26 +422,26 @@ of colors for dark...really just doing this to change colors*/
   border: 2px solid #dcdcdc;
 }
 
-.jimu-widget-InfoSummary .groupItemImageUp{
+.jimu-widget-InfoSummary .groupItemImageUp {
   background-image: url(../images/default_nav_up.png);
   background-color: white;
 }
 
-.jimu-widget-InfoSummary .groupItemImageDown{
+.jimu-widget-InfoSummary .groupItemImageDown {
   background-image: url(../images/default_nav_down.png);
   background-color: white;
 }
 
-.jimu-widget-InfoSummary .groupOff{
+.jimu-widget-InfoSummary .groupOff {
   display: none !important;
 }
 
-.jimu-widget-InfoSummary .groupOn{
+.jimu-widget-InfoSummary .groupOn {
   height: auto;
   display: block;
 }
 
-.jimu-widget-InfoSummary .clusterSymbol{
+.jimu-widget-InfoSummary .clusterSymbol {
   margin: 4px 4px 4px 4px;
   display: block;
   width: 35px;
@@ -448,13 +451,13 @@ of colors for dark...really just doing this to change colors*/
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
-  opacity:0.60;
+  opacity: 0.60;
   filter: alpha(opacity=30);
   z-index: 3;
 }
 
 .jimu-widget-InfoSummary .panelMain {
-    display: block;
+  display: block;
 }
 
 .jimu-widget-InfoSummary .panelContent {
@@ -474,7 +477,7 @@ of colors for dark...really just doing this to change colors*/
 }
 
 .jimu-widget-InfoSummary .pageContent {
-  position:absolute;
+  position: absolute;
   left: 0px;
   right: 0px;
   top: 0px;
@@ -578,7 +581,7 @@ of colors for dark...really just doing this to change colors*/
   width: auto;
   height: auto;
   left: 15px;
-  right:15px;
+  right: 15px;
 }
 
 .jimu-widget-InfoSummary .pageBody {
@@ -640,7 +643,7 @@ of colors for dark...really just doing this to change colors*/
   top: 10px;
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(0,0,0,1);
+  border: 3px solid rgba(0, 0, 0, 1);
   -moz-border-radius: 41px;
   -webkit-border-radius: 41px;
   border-radius: 41px;
@@ -655,7 +658,7 @@ of colors for dark...really just doing this to change colors*/
   top: 10px;
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(0,0,0,1);
+  border: 3px solid rgba(0, 0, 0, 1);
   -moz-border-radius: 41px;
   -webkit-border-radius: 41px;
   border-radius: 41px;
@@ -664,7 +667,7 @@ of colors for dark...really just doing this to change colors*/
   cursor: pointer;
 }
 
-.jimu-widget-InfoSummary .thumb2{
+.jimu-widget-InfoSummary .thumb2 {
   width: 43px;
   height: 43px;
   align-content: center;
@@ -678,11 +681,11 @@ of colors for dark...really just doing this to change colors*/
 }
 
 .jimu-widget-InfoSummary .active {
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .jimu-rtl .jimu-widget-InfoSummary .active {
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .jimu-widget-InfoSummary .groupCountLabel {
@@ -817,7 +820,7 @@ of colors for dark...really just doing this to change colors*/
 }
 
 .jimu-widget-InfoSummary .innerMainPanelIcon {
-  background-size: contain; 
+  background-size: contain;
   width: 100%;
   max-width: 310px;
   height: 120px;
@@ -887,7 +890,7 @@ of colors for dark...really just doing this to change colors*/
 }
 
 .jimu-widget-InfoSummary .solidBorder-dart {
-  border-bottom: 1px solid rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
 
 .jimu-widget-InfoSummary .imageDataGFX {
@@ -929,7 +932,7 @@ of colors for dark...really just doing this to change colors*/
   -moz-transform: rotate(0);
 }
 
-.jimu-widget-InfoSummary .searching{
+.jimu-widget-InfoSummary .searching {
   height: 10px;
   width: 40px;
   background-image: url(../images/loading.gif);
@@ -941,7 +944,7 @@ of colors for dark...really just doing this to change colors*/
   right: 0px;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .searching{
+.jimu-rtl .jimu-widget-InfoSummary .searching {
   height: 10px;
   width: 40px;
   background-image: url(../images/loading.gif);
@@ -953,7 +956,7 @@ of colors for dark...really just doing this to change colors*/
   left: 0px;
 }
 
-.jimu-widget-InfoSummary .expandSearching{
+.jimu-widget-InfoSummary .expandSearching {
   background-image: url(../images/loading.gif);
   position: absolute;
   background-repeat: no-repeat;
@@ -963,7 +966,7 @@ of colors for dark...really just doing this to change colors*/
   display: block;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .expandSearching{
+.jimu-rtl .jimu-widget-InfoSummary .expandSearching {
   background-image: url(../images/loading.gif);
   position: absolute;
   background-repeat: no-repeat;
@@ -973,7 +976,8 @@ of colors for dark...really just doing this to change colors*/
   display: block;
 }
 
-.jimu-widget-InfoSummary .expand{
+.jimu-widget-InfoSummary .expand {
+  display: none;
   width: 50px;
   height: 9px;
   background-repeat: no-repeat;
@@ -987,7 +991,7 @@ of colors for dark...really just doing this to change colors*/
   -moz-transform: rotate(0);
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .expand{
+.jimu-rtl .jimu-widget-InfoSummary .expand {
   width: 50px;
   height: 9px;
   background-repeat: no-repeat;
@@ -1001,14 +1005,14 @@ of colors for dark...really just doing this to change colors*/
   -moz-transform: rotate(0);
 }
 
-.jimu-widget-InfoSummary .expandInActive{
+.jimu-widget-InfoSummary .expandInActive {
   opacity: 0;
-  display:none;
+  display: none;
   -webkit-transform: translateZ(0);
   -moz-transform: rotate(0);
 }
 
-.jimu-widget-InfoSummary .expandImageContainer{
+.jimu-widget-InfoSummary .expandImageContainer {
   width: 25px;
   height: 12px;
   margin-right: 5px;
@@ -1018,7 +1022,7 @@ of colors for dark...really just doing this to change colors*/
   padding-right: 5px;
 }
 
-.jimu-rtl .jimu-widget-InfoSummary .expandImageContainer{
+.jimu-rtl .jimu-widget-InfoSummary .expandImageContainer {
   width: 25px;
   height: 12px;
   margin-left: 5px;
@@ -1028,31 +1032,31 @@ of colors for dark...really just doing this to change colors*/
   padding-left: 5px;
 }
 
-.jimu-widget-InfoSummary .expandUp{
+.jimu-widget-InfoSummary .expandUp {
   background-image: url(../images/default_nav_up.png);
   bottom: -1px;
   background-position-y: 2px;
   border-top: 1px solid #dcdcdc;
   border-left: 1px solid #dcdcdc;
   border-right: 1px solid #dcdcdc;
-  -webkit-border-top-radius:8px;
-  -moz-border-top-radius:8px;
-  -o-border-top-radius:8px;
-  -ms-border-top-radius:8px;
+  -webkit-border-top-radius: 8px;
+  -moz-border-top-radius: 8px;
+  -o-border-top-radius: 8px;
+  -ms-border-top-radius: 8px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   z-index: 1;
 }
 
-.jimu-widget-InfoSummary .expandDown{
+.jimu-widget-InfoSummary .expandDown {
   background-image: url(../images/default_nav_down.png);
   bottom: -5px;
   background-position-y: -1px;
   border-bottom: 1px solid #dcdcdc;
-  -webkit-border-bottom-radius:8px;
-  -moz-border-bottom-radius:8px;
-  -o-border-bottom-radius:8px;
-  -ms-border-bottom-radius:8px;
+  -webkit-border-bottom-radius: 8px;
+  -moz-border-bottom-radius: 8px;
+  -o-border-bottom-radius: 8px;
+  -ms-border-bottom-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   z-index: 1;
@@ -1093,16 +1097,15 @@ of colors for dark...really just doing this to change colors*/
 }
 
 .jimu-widget-InfoSummary .layer-row-mouseover-dart {
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, .5);
 }
 
 
 /* MEDIA SPECIFIC: SMALL TABLETS */
 @media only screen and (max-width: 750px) {
-  .jimu-widget-InfoSummary .pageContent{
-  }
+  .jimu-widget-InfoSummary .pageContent {}
 
-  .jimu-widget-InfoSummary .pageHeader{
+  .jimu-widget-InfoSummary .pageHeader {
     position: relative;
     width: 100%;
     height: 0px;
@@ -1151,7 +1154,7 @@ of colors for dark...really just doing this to change colors*/
     font-size: 40px;
     height: 70px;
     line-height: 70px;
-    border: 5px solid rgba(0,0,0,1);
+    border: 5px solid rgba(0, 0, 0, 1);
     -moz-border-radius: 40px;
     -webkit-border-radius: 40px;
     border-radius: 40px;
