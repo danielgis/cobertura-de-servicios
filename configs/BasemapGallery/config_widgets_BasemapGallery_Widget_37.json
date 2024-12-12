@@ -3,8 +3,8 @@
     "mode": 2,
     "basemaps": [
       {
-        "title": "Imágenes",
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_1_1732654216606.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_1_1733974341706.png",
+        "title": "Imágenes 1",
         "layers": [
           {
             "opacity": 1,
@@ -448,8 +448,8 @@
         }
       },
       {
-        "title": "Imágenes con etiquetas",
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_2_1732654216610.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_2_1733974341708.png",
+        "title": "Imágenes con etiquetas 1",
         "layers": [
           {
             "opacity": 1,
@@ -902,8 +902,8 @@
         }
       },
       {
-        "title": "Topográfico",
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_3_1732654216612.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_3_1733974341710.png",
+        "title": "Topográfico 1",
         "layers": [
           {
             "opacity": 1,
@@ -913,11 +913,10 @@
             "layerType": "ArcGISTiledMapServiceLayer",
             "id": "defaultBasemap",
             "serviceInfoResponse": {
-              "currentVersion": 11.3,
-              "cimVersion": "3.3.0",
-              "serviceDescription": "<div style='text-align:Left;font-size:12pt'><p><span>This map is designed to be used as a basemap by GIS professionals and as a reference map by anyone. The map includes administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, and airports overlaid on land cover and shaded relief imagery for added context. The map provides coverage for the world down to a scale of ~1:72k. Coverage is provided down to ~1:4k for the following areas: Australia and New Zealand; India; Europe; Canada; Mexico; the continental United States and Hawaii; South America and Central America; Africa; and most of the Middle East. Coverage down to ~1:1k and ~1:2k is available in select urban areas. This basemap was compiled from a variety of best available sources from several data providers, including the U.S. Geological Survey (USGS), U.S. Environmental Protection Agency (EPA), U.S. National Park Service (NPS), Food and Agriculture Organization of the United Nations (FAO), Department of Natural Resources Canada (NRCAN), GeoBase, Agriculture and Agri-Food Canada, Garmin, HERE, Esri, OpenStreetMap contributors, and the GIS User Community. For more information on this map, including our terms of use, visit us online at https://goto.arcgisonline.com/maps/World_Topo_Map</span></p></div>",
+              "currentVersion": 10.91,
+              "serviceDescription": "This map is designed to be used as a basemap by GIS professionals and as a reference map by anyone. The map includes administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, and airports overlaid on land cover and shaded relief imagery for added context. The map provides coverage for the world down to a scale of ~1:72k. Coverage is provided down to ~1:4k for the following areas: Australia and New Zealand; India; Europe; Canada; Mexico; the continental United States and Hawaii; South America and Central America; Africa; and most of the Middle East. Coverage down to ~1:1k and ~1:2k is available in select urban areas. This basemap was compiled from a variety of best available sources from several data providers, including the U.S. Geological Survey (USGS), U.S. Environmental Protection Agency (EPA), U.S. National Park Service (NPS), Food and Agriculture Organization of the United Nations (FAO), Department of Natural Resources Canada (NRCAN), GeoBase, Agriculture and Agri-Food Canada, Garmin, HERE, Esri, OpenStreetMap contributors, and the GIS User Community. For more information on this map, including the terms of use, visit us <a href=\"http://goto.arcgisonline.com/maps/World_Topo_Map \" target=\"_new\" >online</a>.",
               "mapName": "Layers",
-              "description": "<DIV STYLE=\"text-align:Left;font-size:12pt\"><P><SPAN>This map is designed to be used as a basemap by GIS professionals and as a reference map by anyone. The map includes administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, and airports overlaid on land cover and shaded relief imagery for added context. The map provides coverage for the world down to a scale of ~1:72k. Coverage is provided down to ~1:4k for the following areas: Australia and New Zealand; India; Europe; Canada; Mexico; the continental United States and Hawaii; South America and Central America; Africa; and most of the Middle East. Coverage down to ~1:1k and ~1:2k is available in select urban areas. This basemap was compiled from a variety of best available sources from several data providers, including the U.S. Geological Survey (USGS), U.S. Environmental Protection Agency (EPA), U.S. National Park Service (NPS), Food and Agriculture Organization of the United Nations (FAO), Department of Natural Resources Canada (NRCAN), GeoBase, Agriculture and Agri-Food Canada, Garmin, HERE, Esri, OpenStreetMap contributors, and the GIS User Community. For more information on this map, including our terms of use, visit us online at https://goto.arcgisonline.com/maps/World_Topo_Map</SPAN></P></DIV>",
+              "description": "This map is designed to be used as a basemap by GIS professionals and as a reference map by anyone. The map includes administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, and airports overlaid on land cover and shaded relief imagery for added context. The map provides coverage for the world down to a scale of ~1:72k. Coverage is provided down to ~1:4k for the following areas: Australia and New Zealand; India; Europe; Canada; Mexico; the continental United States and Hawaii; South America and Central America; Africa; and most of the Middle East. Coverage down to ~1:1k and ~1:2k is available in select urban areas. This basemap was compiled from a variety of best available sources from several data providers, including the U.S. Geological Survey (USGS), U.S. Environmental Protection Agency (EPA), U.S. National Park Service (NPS), Food and Agriculture Organization of the United Nations (FAO), Department of Natural Resources Canada (NRCAN), GeoBase, Agriculture and Agri-Food Canada, Garmin, HERE, Esri, OpenStreetMap contributors, and the GIS User Community. For more information on this map, including our terms of use, visit us online at http://goto.arcgisonline.com/maps/World_Topo_Map",
               "copyrightText": "Sources: Esri, HERE, Garmin, Intermap, increment P Corp., GEBCO, USGS, FAO, NPS, NRCAN, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), (c) OpenStreetMap contributors, and the GIS User Community",
               "supportsDynamicLayers": false,
               "layers": [
@@ -925,29 +924,18 @@
                   "id": 0,
                   "name": "Citations",
                   "parentLayerId": -1,
-                  "defaultVisibility": true,
+                  "defaultVisibility": false,
                   "subLayerIds": null,
                   "minScale": 0,
                   "maxScale": 0,
                   "type": "Feature Layer",
-                  "geometryType": "esriGeometryPolygon",
-                  "supportsDynamicLegends": true
+                  "geometryType": "esriGeometryPolygon"
                 }
               ],
               "tables": [],
               "spatialReference": {
                 "wkid": 102100,
-                "latestWkid": 3857,
-                "xyTolerance": 0.001,
-                "zTolerance": 0.001,
-                "mTolerance": 0.001,
-                "falseX": -20037700,
-                "falseY": -30241100,
-                "xyUnits": 10000,
-                "falseZ": -100000,
-                "zUnits": 10000,
-                "falseM": -100000,
-                "mUnits": 10000
+                "latestWkid": 3857
               },
               "singleFusedMapCache": true,
               "tileInfo": {
@@ -962,17 +950,7 @@
                 },
                 "spatialReference": {
                   "wkid": 102100,
-                  "latestWkid": 3857,
-                  "xyTolerance": 0.001,
-                  "zTolerance": 0.0002,
-                  "mTolerance": 0.0002,
-                  "falseX": -22041257.77387803,
-                  "falseY": -32799975.42235916,
-                  "xyUnits": 142878261.42550784,
-                  "falseZ": -100000,
-                  "zUnits": 10000,
-                  "falseM": -100000,
-                  "mUnits": 10000
+                  "latestWkid": 3857
                 },
                 "lods": [
                   {
@@ -1097,15 +1075,11 @@
                   }
                 ]
               },
-              "storageInfo": {
-                "storageFormat": "esriMapCacheStorageModeCompactV2",
-                "packetSize": 128
-              },
               "initialExtent": {
-                "xmin": -20037507.067161843,
-                "ymin": -23323694.070462175,
-                "xmax": 20037507.067161843,
-                "ymax": 23367848.25192683,
+                "xmin": -33428092.594159104,
+                "ymin": -18083276.078478705,
+                "xmax": 33428092.594159104,
+                "ymax": 18083276.078478742,
                 "spatialReference": {
                   "cs": "pcs",
                   "wkid": 102100
@@ -1113,89 +1087,56 @@
               },
               "fullExtent": {
                 "xmin": -20037507.067161843,
-                "ymin": -19990709.435000014,
+                "ymin": -19971868.8804086,
                 "xmax": 20037507.067161843,
-                "ymax": 20034863.616499823,
+                "ymax": 19971868.88040863,
                 "spatialReference": {
                   "cs": "pcs",
                   "wkid": 102100
                 }
               },
-              "datesInUnknownTimezone": false,
               "minScale": 0,
               "maxScale": 0,
               "units": "esriMeters",
               "supportedImageFormatTypes": "PNG32,PNG24,PNG,JPG,DIB,TIFF,EMF,PS,PDF,GIF,SVG,SVGZ,BMP",
               "documentInfo": {
-                "Title": "World Topo Map",
-                "Author": "",
-                "Comments": "<DIV STYLE=\"text-align:Left;font-size:12pt\"><P><SPAN>This map is designed to be used as a basemap by GIS professionals and as a reference map by anyone. The map includes administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, and airports overlaid on land cover and shaded relief imagery for added context. The map provides coverage for the world down to a scale of ~1:72k. Coverage is provided down to ~1:4k for the following areas: Australia and New Zealand; India; Europe; Canada; Mexico; the continental United States and Hawaii; South America and Central America; Africa; and most of the Middle East. Coverage down to ~1:1k and ~1:2k is available in select urban areas. This basemap was compiled from a variety of best available sources from several data providers, including the U.S. Geological Survey (USGS), U.S. Environmental Protection Agency (EPA), U.S. National Park Service (NPS), Food and Agriculture Organization of the United Nations (FAO), Department of Natural Resources Canada (NRCAN), GeoBase, Agriculture and Agri-Food Canada, Garmin, HERE, Esri, OpenStreetMap contributors, and the GIS User Community. For more information on this map, including our terms of use, visit us online at https://goto.arcgisonline.com/maps/World_Topo_Map</SPAN></P></DIV>",
-                "Subject": "In mature support; no longer updated.",
-                "Category": "",
-                "Version": "3.1.0",
-                "AntialiasingMode": "Fast",
+                "Title": "World Topographic Map",
+                "Author": "Esri",
+                "Comments": "",
+                "Subject": "topographic, topography, administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, airports, land cover, shaded relief imagery",
+                "Category": "imageryBaseMapsEarthCover (Imagery, basemaps, and land cover)",
+                "AntialiasingMode": "None",
                 "TextAntialiasingMode": "Force",
                 "Keywords": "World,Global,Europe,North America,South America,Southern Africa,Australia,New Zealand,India"
               },
-              "supportsQueryDomains": true,
-              "capabilities": "Map,Query,Data,Tilemap",
-              "supportedQueryFormats": "JSON, geoJSON, PBF",
+              "capabilities": "Map,Tilemap,Query,Data",
+              "supportedQueryFormats": "JSON, geoJSON",
               "exportTilesAllowed": false,
               "referenceScale": 0,
               "datumTransformations": [
                 {
                   "geoTransforms": [
                     {
-                      "wkid": 108100,
-                      "latestWkid": 15973,
-                      "transformForward": false,
-                      "name": "WGS_1984_Major_Auxiliary_Sphere_To_WGS_1984"
-                    }
-                  ]
-                },
-                {
-                  "geoTransforms": [
-                    {
-                      "wkid": 108100,
-                      "latestWkid": 15973,
+                      "wkid": 108001,
+                      "latestWkid": 1241,
                       "transformForward": true,
-                      "name": "WGS_1984_Major_Auxiliary_Sphere_To_WGS_1984"
+                      "name": "NAD_1927_To_NAD_1983_NADCON"
                     }
                   ]
                 },
                 {
                   "geoTransforms": [
                     {
-                      "wkid": 108100,
-                      "latestWkid": 15973,
+                      "wkid": 108001,
+                      "latestWkid": 1241,
                       "transformForward": false,
-                      "name": "WGS_1984_Major_Auxiliary_Sphere_To_WGS_1984"
-                    }
-                  ]
-                },
-                {
-                  "geoTransforms": [
-                    {
-                      "wkid": 108100,
-                      "latestWkid": 15973,
-                      "transformForward": true,
-                      "name": "WGS_1984_Major_Auxiliary_Sphere_To_WGS_1984"
+                      "name": "NAD_1927_To_NAD_1983_NADCON"
                     }
                   ]
                 }
               ],
               "supportsDatumTransformation": true,
-              "archivingInfo": {
-                "supportsHistoricMoment": false
-              },
-              "supportsClipping": true,
-              "supportsSpatialFilter": true,
-              "supportsTimeRelation": true,
-              "supportsQueryDataElements": true,
-              "mapUnits": {
-                "uwkid": 9001
-              },
-              "maxRecordCount": 2000,
+              "maxRecordCount": 1000,
               "maxImageHeight": 4096,
               "maxImageWidth": 4096,
               "supportedExtensions": "KmlServer"
@@ -1208,8 +1149,8 @@
         }
       },
       {
-        "title": "Calles",
-        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_4_1732654216613.png",
+        "thumbnailUrl": "${appPath}/configs/BasemapGallery/base64Img_widgets_BasemapGallery_Widget_37_4_1733974341710.png",
+        "title": "Calles 1",
         "layers": [
           {
             "opacity": 1,
@@ -1387,8 +1328,8 @@
                 "xmax": 33938403.394018404,
                 "ymax": 21018670.283795446,
                 "spatialReference": {
-                  "cs": "pcs",
-                  "wkid": 102100
+                  "wkid": 102100,
+                  "latestWkid": 3857
                 }
               },
               "fullExtent": {
@@ -1397,8 +1338,8 @@
                 "xmax": 20037507.067161843,
                 "ymax": 19971868.880408484,
                 "spatialReference": {
-                  "cs": "pcs",
-                  "wkid": 102100
+                  "wkid": 102100,
+                  "latestWkid": 3857
                 }
               },
               "minScale": 0,
